@@ -14,28 +14,46 @@ class Posts extends Component {
   componentDidMount() {
     fetch('https://chitter-backend-api.herokuapp.com/peeps')
       .then(response => response.json())
-      .then(data => {
-        this.setState({
-          isLoaded: true,
-          posts: data,
+      .then(
+        (data) => {
+          this.setState({
+            isLoaded: true,
+            posts: data,
+            error: null,
+          })
+          console.log(data)
+        },
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error
+          })
         })
-        console.log(data)
-      })
   }
+
   render() {
-    var { posts, isLoaded } = this.state
-    return (
-      <div>
-        Hello
+    var { posts, isLoaded, error } = this.state
+    if (error) {
+      return <div>Error {error.message}</div>
+    } else if (!isLoaded) {
+      return <div>Loading...</div>
+    } else {
+      return (
+        <div>
+          Hello
         <ul>
-          {posts.map(post =>
-            <li>
-              {post.body}
+            {posts.map(post =>
+              <li key={post.id}>
+                <p>User: {post.user.handle}, </p>
+                <p>Body: {post.body},</p>
+                <p>Created at: {post.created_at}</p>
+                -----
             </li>)
-          }
-        </ul>
-      </div>
-    )
+            }
+          </ul>
+        </div>
+      )
+    }
   }
 }
 
