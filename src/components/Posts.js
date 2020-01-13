@@ -40,8 +40,7 @@ class Posts extends Component {
     } else {
       return (
         <div>
-          Hello
-        <ul>
+          <ul>
             {posts.map(post =>
               <li key={post.id}>
                 <p>User: {post.user.handle}, </p>

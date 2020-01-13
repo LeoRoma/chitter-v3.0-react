@@ -1,12 +1,15 @@
 import React from 'react';
 import './App.css';
 import Posts from './components/Posts'
+import Header from './components/Header'
 
 function App() {
   return (
-    <Posts>
+    <div>
+      <Header/>
+      <Posts></Posts>
+    </div>
 
-    </Posts>
   );
 }
 
