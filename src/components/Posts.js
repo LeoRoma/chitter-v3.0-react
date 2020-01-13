@@ -11,17 +11,29 @@ class Posts extends Component {
     }
   }
 
-  async componentDidMount() {
-    const url = 'https://chitter-backend-api.herokuapp.com/peeps';
-    const response = await fetch(url);
-    const data = await response.json();
-    console.log(data)
+  componentDidMount() {
+    fetch('https://chitter-backend-api.herokuapp.com/peeps')
+      .then(response => response.json())
+      .then(data => {
+        this.setState({
+          isLoaded: true,
+          posts: data,
+        })
+        console.log(data)
+      })
   }
-
   render() {
+    var { posts, isLoaded } = this.state
     return (
       <div>
         Hello
+        <ul>
+          {posts.map(post =>
+            <li>
+              {post.body}
+            </li>)
+          }
+        </ul>
       </div>
     )
   }
