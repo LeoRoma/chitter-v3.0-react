@@ -66,9 +66,7 @@ class SignUp extends Component {
     );
   }
 }
-// const style = {
-//   margin: 15,
-// };
+
 
 
 export default SignUp;
