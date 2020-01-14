@@ -26,17 +26,13 @@ class Header extends Component {
           <MDBNavbarToggler onClick={this.toggleCollapse} />
           <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
             <MDBNavbarNav left>
-              <MDBNavItem active>
-                <MDBNavLink to="#!">Home</MDBNavLink>
-              </MDBNavItem>
-            </MDBNavbarNav>
-            <MDBNavbarNav right>
               <MDBNavItem>
                 <MDBDropdown>
                   <MDBDropdownToggle nav caret>
                     <MDBIcon icon="user" />
                   </MDBDropdownToggle>
-                  <MDBDropdownMenu className="dropdown-default">
+                  <MDBDropdownMenu 
+                  width="20%">
                     <MDBDropdownItem href="#!"><SignUp /></MDBDropdownItem>
                   </MDBDropdownMenu>
                 </MDBDropdown>
@@ -50,6 +46,12 @@ class Header extends Component {
                 <MDBNavLink className="waves-effect waves-light" to="#!">
                   <MDBIcon fab icon="google-plus-g" />
                 </MDBNavLink>
+              </MDBNavItem>
+
+            </MDBNavbarNav>
+            <MDBNavbarNav right>
+              <MDBNavItem active>
+                <MDBNavLink to="#!">Home</MDBNavLink>
               </MDBNavItem>
             </MDBNavbarNav>
           </MDBCollapse>
