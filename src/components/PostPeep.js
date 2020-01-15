@@ -33,7 +33,7 @@ class PostPeep extends Component {
       },
       body: JSON.stringify(data)
     })
-      .then((response) => console.log(response.json(), "After login:" + this.state.session_key))
+      .then((response) => console.log(response.json(), "After login:" + this.state.session_key + "ID:" + this.state.user_id))
       .then((data) => {
         // console.log(response)
         console.log("success:", data);
