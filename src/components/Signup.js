@@ -65,7 +65,8 @@ class SignUp extends Component {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("success:", data);
+        sessionStorage.setItem('user_id', data.user_id);
+        sessionStorage.setItem('session_key', data.session_key);
       })
       .catch((error) => {
         console.error('Error:', error);
@@ -73,7 +74,7 @@ class SignUp extends Component {
   }
   render() {
     return (
-      <div class="container">
+      <div className="container">
         <form onSubmit={this.handleSubmit} noValidate>
           {/* Username */}
           <TextField
