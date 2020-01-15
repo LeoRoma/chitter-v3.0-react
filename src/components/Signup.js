@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
-// import { Redirect } from 'react-router-dom'
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-// import { Link } from 'react-router-dom';
-// import Grid from '@material-ui/core/Grid';
-// import Typography from '@material-ui/core/Typography';
-// import Paper from '@material-ui/core/Paper'
+
 
 class SignUp extends Component {
 
@@ -40,15 +36,41 @@ class SignUp extends Component {
       },
       body: JSON.stringify(data)
     })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log("success:", data);
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("success:", data);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      })
   }
 
+  handleLogin = event => {
+    let data = {
+      session: {
+        handle: this.state.handle,
+        password: this.state.password
+      }
+    };
+    event.preventDefault();
+    console.log("hello")
+    event.preventDefault();
+    fetch('https://chitter-backend-api.herokuapp.com/sessions', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(data)
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("success:", data);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      })
+  }
   render() {
     return (
       <div class="container">
@@ -77,12 +99,23 @@ class SignUp extends Component {
             autoComplete="current-password"
             onChange={this.handlePasswordChange}
           /><br />
+
+          {/* signup button  */}
           <Button
             type="submit"
             variant="contained"
             color="primary"
           >
             Sign Up
+          </Button><br />
+
+          {/* login button  */}
+          <Button onClick={this.handleLogin.bind(this)}
+            type="submit"
+            variant="contained"
+            color="primary"
+          >
+            Login
           </Button>
         </form>
       </div >
