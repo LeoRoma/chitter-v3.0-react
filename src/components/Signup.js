@@ -25,8 +25,28 @@ class SignUp extends Component {
   }
 
   handleSubmit = event => {
-    event.preventDefault()
-    console.log(this.state)
+    let data = {
+      user: {
+        handle: this.state.handle,
+        password: this.state.password
+      }
+    };
+    event.preventDefault();
+    fetch('https://chitter-backend-api.herokuapp.com/users', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(data)
+    })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("success:", data);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    })
   }
 
   render() {
