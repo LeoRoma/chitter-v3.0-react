@@ -20,7 +20,7 @@ class SignUp extends Component {
     this.setState({ password: event.target.value })
   }
 
-  handleSubmit = event => {
+  handleSignup = event => {
     let data = {
       user: {
         handle: this.state.handle,
@@ -65,7 +65,9 @@ class SignUp extends Component {
     })
       .then((response) => response.json())
       .then((data) => {
+        console.log("user_id:" + data.user_id);
         sessionStorage.setItem('user_id', data.user_id);
+        console.log("session_key:" + data.session_key);
         sessionStorage.setItem('session_key', data.session_key);
       })
       .catch((error) => {
@@ -75,7 +77,7 @@ class SignUp extends Component {
   render() {
     return (
       <div className="container">
-        <form onSubmit={this.handleSubmit} noValidate>
+        <form>
           {/* Username */}
           <TextField
             variant="outlined"
@@ -102,7 +104,7 @@ class SignUp extends Component {
           /><br />
 
           {/* signup button  */}
-          <Button
+          <Button onClick={this.handleSignup.bind(this)}
             type="submit"
             variant="contained"
             color="primary"
