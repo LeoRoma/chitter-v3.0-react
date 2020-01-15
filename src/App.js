@@ -1,17 +1,20 @@
 import React from 'react';
 import './App.css';
-import Posts from './components/Posts';
+
 import Header from './components/Header';
+import Posts from './components/Posts';
+import PostPeep from './components/PostPeep'
 import SignUp from './components/Signup';
 
 
 function App() {
   return (
     <div>
-      <Header/>
-      <SignUp/>
-      <Posts/>
-      
+      <Header />
+      <SignUp />
+      <PostPeep />
+      <Posts />
+
     </div>
 
   );
