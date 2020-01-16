@@ -16,7 +16,7 @@ function App() {
       <Interface />
       <SignUp />
       <PostPeep />
-      <Posts />
+      {/* <Posts /> */}
 
     </div>
 

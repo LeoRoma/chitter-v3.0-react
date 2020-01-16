@@ -1,59 +1,20 @@
-import React, { Component } from 'react';
-// import axios from 'axios'
+import React from 'react';
 
-
-class Posts extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      posts: [],
-      isLoaded: false,
-    }
-  }
-
-  componentDidMount() {
-    fetch('https://chitter-backend-api.herokuapp.com/peeps')
-      .then(response => response.json())
-      .then(
-        (data) => {
-          this.setState({
-            isLoaded: true,
-            posts: data,
-            error: null,
-          })
-          console.log(data)
-        },
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            error
-          })
-        })
-  }
-
-  render() {
-    var { posts, isLoaded, error } = this.state
-    if (error) {
-      return <div>Error {error.message}</div>
-    } else if (!isLoaded) {
-      return <div>Loading...</div>
-    } else {
-      return (
-        <div>
-          <ul>
-            {posts.map(post =>
-              <li key={post.id}>
-                <p>User: {post.user.handle}, </p>
-                <p>Body: {post.body},</p>
-                <p>Created at: {post.created_at}</p>
-                -----
-            </li>)
-            }
-          </ul>
+const Posts = ({ posts, isLoaded, error }) => {
+  return (
+    <div>
+      <center><h1>Contact List</h1></center>
+      {posts.map((post) => (
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{post.user.handle}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{post.body}</h6>
+            <p class="card-text">{post.created_at}</p>
+          </div>
         </div>
-      )
-    }
-  }
+      ))}
+    </div>
+  )
 }
 
 export default Posts
