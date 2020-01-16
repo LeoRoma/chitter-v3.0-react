@@ -31,7 +31,7 @@ class SignUp extends Component {
         password: this.state.password
       }
     };
-
+    event.preventDefault();
     fetch('https://chitter-backend-api.herokuapp.com/users', {
       method: 'POST',
       headers: {
@@ -58,8 +58,6 @@ class SignUp extends Component {
       }
     };
     event.preventDefault();
-    console.log("hello")
-    event.preventDefault();
     fetch('https://chitter-backend-api.herokuapp.com/sessions', {
       method: 'POST',
       headers: {
@@ -70,8 +68,8 @@ class SignUp extends Component {
     })
       .then((response) => response.json())
       .then((data) => {
-        // user_id: data.user_id;
-        // session_key: data.session_key;
+        this.state.user_id = data.user_id;
+        this.state.session_key = data.session_key;
       })
       .catch((error) => {
         console.error('Error:', error);
