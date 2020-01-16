@@ -9,7 +9,10 @@ class SignUp extends Component {
     super(props);
     this.state = {
       handle: '',
-      password: ''
+      password: '',
+      user_id: '',
+      session_key: '',
+      peep: ""
     }
   }
   handleHandleChange = event => {
@@ -20,6 +23,7 @@ class SignUp extends Component {
     this.setState({ password: event.target.value })
   }
 
+  // signup 
   handleSignup = event => {
     let data = {
       user: {
@@ -27,7 +31,7 @@ class SignUp extends Component {
         password: this.state.password
       }
     };
-    event.preventDefault();
+
     fetch('https://chitter-backend-api.herokuapp.com/users', {
       method: 'POST',
       headers: {
@@ -45,6 +49,7 @@ class SignUp extends Component {
       })
   }
 
+  // login 
   handleLogin = event => {
     let data = {
       session: {
@@ -65,13 +70,44 @@ class SignUp extends Component {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("user_id:" + data.user_id);
-        sessionStorage.setItem('user_id', data.user_id);
-        console.log("session_key:" + data.session_key);
-        sessionStorage.setItem('session_key', data.session_key);
+        // user_id: data.user_id;
+        // session_key: data.session_key;
       })
       .catch((error) => {
         console.error('Error:', error);
+      })
+  }
+
+  // send peep 
+  handlePeep = event => {
+    this.setState({ peep: event.target.value })
+  }
+
+  handlePostPeep = event => {
+    let data = {
+      peep: {
+        user_id: this.state.user_id,
+        body: this.state.peep,
+      }
+    };
+
+    event.preventDefault();
+    fetch('https://chitter-backend-api.herokuapp.com/peeps', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+        'Authorization': `Token token=${this.state.session_key}`,
+      },
+      body: JSON.stringify(data)
+    })
+      .then((response) => console.log(response.json(), "After login:" + this.state.session_key + "ID:" + this.state.user_id))
+      .then((data) => {
+        // console.log(response)
+        console.log("success:", data);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+
       })
   }
   render() {
@@ -120,6 +156,27 @@ class SignUp extends Component {
           >
             Login
           </Button>
+        </form>
+        <form>
+          <TextField
+            variant="outlined"
+            required
+            // fullWidth
+            name="peep"
+            label="Write your peep"
+            id="peep"
+            autoComplete="current-password"
+            onChange={this.handlePeep}
+          /><br />
+
+          {/* send peep button  */}
+          <Button onClick={this.handlePostPeep.bind(this)}
+            type="submit"
+            variant="contained"
+            color="primary"
+          >
+            Send Peep
+          </Button><br />
         </form>
       </div >
 

@@ -3,7 +3,7 @@ import React from 'react';
 const Posts = ({ posts, isLoaded, error }) => {
   return (
     <div>
-      <center><h1>Contact List</h1></center>
+      <center><h1>Peeps</h1></center>
       {posts.map((post) => (
         <div class="card">
           <div class="card-body">
