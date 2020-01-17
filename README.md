@@ -1,6 +1,8 @@
 # chitterV3.0-react
 ## Description
 - First React project.
+- The project is not terminated yet.
+
 ## Features implemented
 - Creating Users
 - Logging in
