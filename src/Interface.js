@@ -2,6 +2,7 @@ import React, { Component, useEffect } from 'react';
 import Posts from './components/Posts';
 import PostPeep from './components/PostPeep'
 import SignUp from './components/Signup';
+import axios from 'axios';
 
 class Interface extends Component {
   constructor(props) {
@@ -18,48 +19,22 @@ class Interface extends Component {
 
   // get peeps
   componentDidMount() {
-    fetch('https://chitter-backend-api.herokuapp.com/peeps')
-      .then(response => response.json())
-      .then(
-        (data) => {
-          this.setState({
-            isLoaded: true,
-            posts: data,
-            error: null,
-          })
-          console.log(data)
-        },
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            error
-          })
-        })
+    axios.get('https://chitter-backend-api.herokuapp.com/peeps')
+      .then((res) => this.setState({ posts: res.data }))
+      .catch(err => console.log(err))
   }
 
 
-  signUp =(handle, password) => {
-    
-    let data = {
-      handle: handle,
-      password: password
-    }
-    console.log('2nd handle:' + data.handle + ' password:' + data.password)
-    fetch('https://chitter-backend-api.herokuapp.com/users', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify(data)
+  signUp = (newUser) => {
+    console.log('2nd handle:' + newUser.handle + ' password:' + newUser.password)
+    axios.post('https://chitter-backend-api.herokuapp.com/users', {
+      user: {
+        handle: newUser.handle,
+        password: newUser.password
+      }
     })
-      .then((response) => console.log(response.json()))
-      .then((data) => {
-        console.log("success:", data);
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      })
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
   };
 
   render() {

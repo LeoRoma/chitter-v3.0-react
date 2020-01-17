@@ -32,7 +32,11 @@ class SignUp extends Component {
   handleSignup = event => {
     event.preventDefault();
     // sessionStorage.setItem('handle', this.state.handle);
-    this.props.signUp(this.state.handle, this.state.password);
+    this.props.signUp(this.state);
+    this.setState({
+      handle: '',
+      password: ''
+    })
     // let data = {
     //   user: {
     //     handle: this.state.handle,
