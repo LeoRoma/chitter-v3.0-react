@@ -68,8 +68,12 @@ class SignUp extends Component {
     })
       .then((response) => response.json())
       .then((data) => {
-        this.state.user_id = data.user_id;
-        this.state.session_key = data.session_key;
+        console.log("login id:" + data.user_id);
+        sessionStorage.setItem('user_id', data.user_id);
+        console.log("login session key:" + data.session_key);
+        sessionStorage.setItem('session_key', data.session_key);
+        console.log("success")
+        console.log(sessionStorage.getItem('session_key'))
       })
       .catch((error) => {
         console.error('Error:', error);
@@ -107,6 +111,8 @@ class SignUp extends Component {
         console.error('Error:', error);
 
       })
+
+      // delete peep 
   }
   render() {
     return (
