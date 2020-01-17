@@ -16,68 +16,81 @@ class SignUp extends Component {
     }
   }
   handleHandleChange = event => {
-    this.setState({ handle: event.target.value })
-  }
+    this.setState({ 
+      handle: event.target.value 
+    })
+    // sessionStorage.setItem('handle', this.state.handle)
+  };
 
   handlePasswordChange = event => {
-    this.setState({ password: event.target.value })
+    this.setState({ 
+      password: event.target.value 
+    })
   }
-
+  
   // signup 
   handleSignup = event => {
-    let data = {
-      user: {
-        handle: this.state.handle,
-        password: this.state.password
-      }
-    };
     event.preventDefault();
-    fetch('https://chitter-backend-api.herokuapp.com/users', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify(data)
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("success:", data);
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      })
+    // sessionStorage.setItem('handle', this.state.handle);
+    this.props.signUp(this.state.handle);
+    
+    console.log('1st:' + this.state.handle);
+    
+    
+    // let data = {
+    //   user: {
+    //     handle: this.state.handle,
+    //     password: this.state.password
+    //   }
+    // };
+    // event.preventDefault();
+    // fetch('https://chitter-backend-api.herokuapp.com/users', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Accept': 'application/json',
+    //     'Content-type': 'application/json',
+    //   },
+    //   body: JSON.stringify(data)
+    // })
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     console.log("success:", data);
+    //   })
+    //   .catch((error) => {
+    //     console.error('Error:', error);
+    //   })
   }
 
   // login 
   handleLogin = event => {
-    let data = {
-      session: {
-        handle: this.state.handle,
-        password: this.state.password
-      }
-    };
-    event.preventDefault();
-    fetch('https://chitter-backend-api.herokuapp.com/sessions', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify(data)
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("login id:" + data.user_id);
-        sessionStorage.setItem('user_id', data.user_id);
-        console.log("login session key:" + data.session_key);
-        sessionStorage.setItem('session_key', data.session_key);
-        console.log("success")
-        console.log(sessionStorage.getItem('session_key'))
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      })
+    console.log('3nd:' + sessionStorage.getItem('handle'))
+    // let data = {
+    //   session: {
+    //     handle: this.state.handle,
+    //     password: this.state.password
+    //   }
+    // };
+    // event.preventDefault();
+    // fetch('https://chitter-backend-api.herokuapp.com/sessions', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Accept': 'application/json',
+    //     'Content-type': 'application/json',
+    //   },
+    //   body: JSON.stringify(data)
+    // })
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     console.log("login id:" + data.user_id);
+    //     sessionStorage.setItem('user_id', data.user_id);
+    //     console.log("login session key:" + data.session_key);
+    //     sessionStorage.setItem('session_key', data.session_key);
+    //     console.log("success")
+    //     console.log(sessionStorage.getItem('session_key'))
+    //   })
+    //   .catch((error) => {
+    //     console.error('Error:', error);
+    //   })
   }
 
   // send peep 
@@ -88,7 +101,7 @@ class SignUp extends Component {
   handlePostPeep = event => {
     let data = {
       peep: {
-        user_id: this.state.user_id,
+        user_id: sessionStorage.getItem('user_id'),
         body: this.state.peep,
       }
     };
@@ -98,7 +111,7 @@ class SignUp extends Component {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
-        'Authorization': `Token token=${this.state.session_key}`,
+        'Authorization': `Token token=${sessionStorage.getItem('session_key')}`,
       },
       body: JSON.stringify(data)
     })

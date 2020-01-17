@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import Posts from './components/Posts';
 import PostPeep from './components/PostPeep'
 import SignUp from './components/Signup';
@@ -37,10 +37,37 @@ class Interface extends Component {
         })
   }
 
+
+  signUp =(value) => {
+    console.log(value)
+    
+    this.setState({
+      handle: value
+    });
+    console.log('2nd:' + this.state.handle)
+    // fetch('https://chitter-backend-api.herokuapp.com/users', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Accept': 'application/json',
+    //     'Content-type': 'application/json',
+    //   },
+    //   body: JSON.stringify(data)
+    // })
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     console.log("success:", data.handle);
+    //   })
+    //   .catch((error) => {
+    //     console.error('Error:', error);
+    //   })
+  };
+
   render() {
     return (
       <div>
-        <SignUp />
+        <SignUp
+          signUp={this.signUp.bind(this)}
+        />
         {/* <PostPeep /> */}
         <Posts posts={this.state.posts} />
 
