@@ -38,28 +38,28 @@ class Interface extends Component {
   }
 
 
-  signUp =(value) => {
-    console.log(value)
+  signUp =(handle, password) => {
     
-    this.setState({
-      handle: value
-    });
-    console.log('2nd:' + this.state.handle)
-    // fetch('https://chitter-backend-api.herokuapp.com/users', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Accept': 'application/json',
-    //     'Content-type': 'application/json',
-    //   },
-    //   body: JSON.stringify(data)
-    // })
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log("success:", data.handle);
-    //   })
-    //   .catch((error) => {
-    //     console.error('Error:', error);
-    //   })
+    let data = {
+      handle: handle,
+      password: password
+    }
+    console.log('2nd handle:' + data.handle + ' password:' + data.password)
+    fetch('https://chitter-backend-api.herokuapp.com/users', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(data)
+    })
+      .then((response) => console.log(response.json()))
+      .then((data) => {
+        console.log("success:", data);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      })
   };
 
   render() {
