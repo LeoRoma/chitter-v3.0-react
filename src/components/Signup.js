@@ -1,7 +1,7 @@
 import React, { Component, useEffect } from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-
+import axios from 'axios';
 
 class SignUp extends Component {
 
@@ -16,18 +16,18 @@ class SignUp extends Component {
     }
   }
   handleHandleChange = event => {
-    this.setState({ 
-      handle: event.target.value 
+    this.setState({
+      handle: event.target.value
     })
     // sessionStorage.setItem('handle', this.state.handle)
   };
 
   handlePasswordChange = event => {
-    this.setState({ 
-      password: event.target.value 
+    this.setState({
+      password: event.target.value
     })
   }
-  
+
   // signup 
   handleSignup = event => {
     event.preventDefault();
@@ -37,6 +37,14 @@ class SignUp extends Component {
       handle: '',
       password: ''
     })
+    // axios.post('https://chitter-backend-api.herokuapp.com/users', {
+    //   user: {
+    //     handle: this.state.handle,
+    //     password: this.state.password
+    //   }
+    // })
+    //   .then(res => console.log(res))
+    //   .catch(err => console.log(err));
     // let data = {
     //   user: {
     //     handle: this.state.handle,
@@ -64,33 +72,33 @@ class SignUp extends Component {
   // login 
   handleLogin = event => {
     console.log('3nd:' + sessionStorage.getItem('handle'))
-    // let data = {
-    //   session: {
-    //     handle: this.state.handle,
-    //     password: this.state.password
-    //   }
-    // };
-    // event.preventDefault();
-    // fetch('https://chitter-backend-api.herokuapp.com/sessions', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Accept': 'application/json',
-    //     'Content-type': 'application/json',
-    //   },
-    //   body: JSON.stringify(data)
-    // })
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log("login id:" + data.user_id);
-    //     sessionStorage.setItem('user_id', data.user_id);
-    //     console.log("login session key:" + data.session_key);
-    //     sessionStorage.setItem('session_key', data.session_key);
-    //     console.log("success")
-    //     console.log(sessionStorage.getItem('session_key'))
-    //   })
-    //   .catch((error) => {
-    //     console.error('Error:', error);
-    //   })
+    let data = {
+      session: {
+        handle: this.state.handle,
+        password: this.state.password
+      }
+    };
+    event.preventDefault();
+    fetch('https://chitter-backend-api.herokuapp.com/sessions', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(data)
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("login id:" + data.user_id);
+        sessionStorage.setItem('user_id', data.user_id);
+        console.log("login session key:" + data.session_key);
+        sessionStorage.setItem('session_key', data.session_key);
+        console.log("success")
+        console.log(sessionStorage.getItem('session_key'))
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      })
   }
 
   // send peep 
@@ -125,7 +133,7 @@ class SignUp extends Component {
 
       })
 
-      // delete peep 
+    // delete peep 
   }
   render() {
     return (
