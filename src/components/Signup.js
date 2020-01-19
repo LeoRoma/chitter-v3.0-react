@@ -1,7 +1,7 @@
-import React, { Component, useEffect } from 'react';
+import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import axios from 'axios';
+import Login from './Login'
 
 class SignUp extends Component {
 
@@ -37,69 +37,39 @@ class SignUp extends Component {
       handle: '',
       password: ''
     })
-    // axios.post('https://chitter-backend-api.herokuapp.com/users', {
-    //   user: {
-    //     handle: this.state.handle,
-    //     password: this.state.password
-    //   }
-    // })
-    //   .then(res => console.log(res))
-    //   .catch(err => console.log(err));
-    // let data = {
-    //   user: {
-    //     handle: this.state.handle,
-    //     password: this.state.password
-    //   }
-    // };
-    // event.preventDefault();
-    // fetch('https://chitter-backend-api.herokuapp.com/users', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Accept': 'application/json',
-    //     'Content-type': 'application/json',
-    //   },
-    //   body: JSON.stringify(data)
-    // })
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log("success:", data);
-    //   })
-    //   .catch((error) => {
-    //     console.error('Error:', error);
-    //   })
   }
 
   // login 
-  handleLogin = event => {
-    console.log('3nd:' + sessionStorage.getItem('handle'))
-    let data = {
-      session: {
-        handle: this.state.handle,
-        password: this.state.password
-      }
-    };
-    event.preventDefault();
-    fetch('https://chitter-backend-api.herokuapp.com/sessions', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify(data)
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("login id:" + data.user_id);
-        sessionStorage.setItem('user_id', data.user_id);
-        console.log("login session key:" + data.session_key);
-        sessionStorage.setItem('session_key', data.session_key);
-        console.log("success")
-        console.log(sessionStorage.getItem('session_key'))
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      })
-  }
+  // handleLogin = event => {
+  //   console.log('3nd:' + sessionStorage.getItem('handle'))
+  //   let data = {
+  //     session: {
+  //       handle: this.state.handle,
+  //       password: this.state.password
+  //     }
+  //   };
+  //   event.preventDefault();
+  //   fetch('https://chitter-backend-api.herokuapp.com/sessions', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Accept': 'application/json',
+  //       'Content-type': 'application/json',
+  //     },
+  //     body: JSON.stringify(data)
+  //   })
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       console.log("login id:" + data.user_id);
+  //       sessionStorage.setItem('user_id', data.user_id);
+  //       console.log("login session key:" + data.session_key);
+  //       sessionStorage.setItem('session_key', data.session_key);
+  //       console.log("success")
+  //       console.log(sessionStorage.getItem('session_key'))
+  //     })
+  //     .catch((error) => {
+  //       console.error('Error:', error);
+  //     })
+  // }
 
   // send peep 
   handlePeep = event => {
@@ -174,13 +144,7 @@ class SignUp extends Component {
           </Button><br />
 
           {/* login button  */}
-          <Button onClick={this.handleLogin.bind(this)}
-            type="submit"
-            variant="contained"
-            color="primary"
-          >
-            Login
-          </Button>
+          <Login />
         </form>
         <form>
           <TextField

@@ -1,6 +1,6 @@
-import React, { Component, useEffect } from 'react';
+import React, { Component } from 'react';
 import Posts from './components/Posts';
-import PostPeep from './components/PostPeep'
+// import PostPeep from './components/PostPeep'
 import SignUp from './components/Signup';
 import axios from 'axios';
 
@@ -26,7 +26,6 @@ class Interface extends Component {
 
 
   signUp = (newUser) => {
-    console.log('2nd handle:' + newUser.handle + ' password:' + newUser.password)
     axios.post('https://chitter-backend-api.herokuapp.com/users', {
       user: {
         handle: newUser.handle,
@@ -36,6 +35,11 @@ class Interface extends Component {
       .then(res => console.log(res))
       .catch(err => console.log(err));
   };
+
+  login = () => {
+    
+  }
+
 
   render() {
     return (
