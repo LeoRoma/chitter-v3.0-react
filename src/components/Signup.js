@@ -40,6 +40,9 @@ class SignUp extends Component {
   }
 
   // login 
+  userLogin = () => {
+    console.log(this.state)
+  }
   // handleLogin = event => {
   //   console.log('3nd:' + sessionStorage.getItem('handle'))
   //   let data = {
@@ -144,7 +147,9 @@ class SignUp extends Component {
           </Button><br />
 
           {/* login button  */}
-          <Login />
+          <Login  
+          login={this.userLogin.bind(this)} 
+            />
         </form>
         <form>
           <TextField
