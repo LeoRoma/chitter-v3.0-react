@@ -37,20 +37,41 @@ class Interface extends Component {
   };
 
   login = (currentUser) => {
-    console.log(currentUser.handle, currentUser.password)
+    axios.post('https://chitter-backend-api.herokuapp.com/sessions/', {
+      session: {
+        handle: currentUser.handle,
+        password: currentUser.password
+      }
+    })
+      .then(res => this.setState({
+        user_id: res.data.user_id,
+        session_key: res.data.session_key
+      }))
+      .catch(err => console.log(err));
+    console.log(this.state.user_id, this.state.session_key)
   }
 
-
+  checkSessionKey = event => {
+    event.preventDefault();
+    console.log(this.state.session_key)
+  }
   render() {
     return (
       <div>
+        {/* Signup and Login  */}
         <SignUp
           signUp={this.signUp.bind(this)}
           login={this.login.bind(this)}
         />
         {/* <PostPeep /> */}
         <Posts posts={this.state.posts} />
-
+        <button onClick={this.checkSessionKey.bind(this)}
+          type="submit"
+          variant="contained"
+          color="primary"
+        >
+          Check Session Key
+        </button>
       </div>
     )
   }
