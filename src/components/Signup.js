@@ -41,6 +41,10 @@ class SignUp extends Component {
 
   // login 
   userLogin = () => {
+    this.setState({
+      handle:'',
+      password: ''
+    })
     console.log(this.state)
   }
   // handleLogin = event => {
