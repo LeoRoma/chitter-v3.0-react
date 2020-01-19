@@ -41,6 +41,7 @@ class SignUp extends Component {
 
   // login 
   userLogin = () => {
+    this.props.login(this.state);
     this.setState({
       handle:'',
       password: ''

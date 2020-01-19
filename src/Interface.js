@@ -36,8 +36,8 @@ class Interface extends Component {
       .catch(err => console.log(err));
   };
 
-  login = () => {
-    
+  login = (currentUser) => {
+    console.log(currentUser.handle, currentUser.password)
   }
 
 
@@ -46,6 +46,7 @@ class Interface extends Component {
       <div>
         <SignUp
           signUp={this.signUp.bind(this)}
+          login={this.login.bind(this)}
         />
         {/* <PostPeep /> */}
         <Posts posts={this.state.posts} />
