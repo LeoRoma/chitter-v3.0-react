@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Posts from './components/Posts';
-// import PostPeep from './components/PostPeep'
+import PostPeep from './components/PostPeep'
 import SignUp from './components/Signup';
 import axios from 'axios';
 
@@ -24,7 +24,7 @@ class Interface extends Component {
       .catch(err => console.log(err))
   }
 
-
+  // Sign Up
   signUp = (newUser) => {
     axios.post('https://chitter-backend-api.herokuapp.com/users', {
       user: {
@@ -36,6 +36,7 @@ class Interface extends Component {
       .catch(err => console.log(err));
   };
 
+  // Login
   login = (currentUser) => {
     axios.post('https://chitter-backend-api.herokuapp.com/sessions/', {
       session: {
@@ -51,10 +52,23 @@ class Interface extends Component {
     console.log(this.state.user_id, this.state.session_key)
   }
 
-  checkSessionKey = event => {
-    event.preventDefault();
-    console.log(this.state.session_key)
+  // Post peep 
+  sendPeep = (peep) => {
+    console.log(peep)
+    // const headers = {
+    //   'Content-Type': 'application/json',
+    //   'Authorization': 'Token token=' + this.state.session_key
+    // }
+    // axios.post('https://chitter-backend-api.herokuapp.com/peeps', {
+    //   peep: {
+    //     user_id: this.state.user_id,
+    //     // body: peep
+    //   }
+    // }, {
+    //   headers: headers
+    // }).then((res) => this.getPeeps())
   }
+
   render() {
     return (
       <div>
@@ -63,15 +77,13 @@ class Interface extends Component {
           signUp={this.signUp.bind(this)}
           login={this.login.bind(this)}
         />
-        {/* <PostPeep /> */}
+
+        {/* Send a new peep  */}
+        <PostPeep 
+        sendPeep={this.sendPeep.bind(this)}/>
+
+        {/* get peeps  */}
         <Posts posts={this.state.posts} />
-        <button onClick={this.checkSessionKey.bind(this)}
-          type="submit"
-          variant="contained"
-          color="primary"
-        >
-          Check Session Key
-        </button>
       </div>
     )
   }
