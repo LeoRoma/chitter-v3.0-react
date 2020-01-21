@@ -16,7 +16,10 @@ class PostPeep extends Component {
 
   handlePostPeep = event => {
     event.preventDefault();
-    this.props.sendPeep('Hello') 
+    this.props.sendPeep(this.state)
+    this.setState({
+      peep: this.state.peep
+    }) 
   }
 
   render() {

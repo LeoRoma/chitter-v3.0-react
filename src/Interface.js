@@ -55,18 +55,18 @@ class Interface extends Component {
   // Post peep 
   sendPeep = (peep) => {
     console.log(peep)
-    // const headers = {
-    //   'Content-Type': 'application/json',
-    //   'Authorization': 'Token token=' + this.state.session_key
-    // }
-    // axios.post('https://chitter-backend-api.herokuapp.com/peeps', {
-    //   peep: {
-    //     user_id: this.state.user_id,
-    //     // body: peep
-    //   }
-    // }, {
-    //   headers: headers
-    // }).then((res) => this.getPeeps())
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Token token=' + this.state.session_key
+    }
+    axios.post('https://chitter-backend-api.herokuapp.com/peeps', {
+      peep: {
+        user_id: this.state.user_id,
+        body: peep.peep
+      }
+    }, {
+      headers: headers
+    }).then((res) => this.componentDidMount())
   }
 
   render() {
