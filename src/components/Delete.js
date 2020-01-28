@@ -3,11 +3,17 @@ import Button from '@material-ui/core/Button';
 
 
 class Delete extends Component {
+  // constructor(props) {
+  //   super(props)
+  //   this.state = {
+  //     id = ''
+  //   }
+  // };
 
   handleDelete = event => {
     event.preventDefault();
     this.props.delete()
-  }
+  };
 
   render() {
     return (
@@ -21,6 +27,6 @@ class Delete extends Component {
        </Button>
       </div>
     )
-  }
-}
+  };
+};
 export default Delete;

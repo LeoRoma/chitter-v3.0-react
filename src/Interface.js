@@ -21,6 +21,7 @@ class Interface extends Component {
   componentDidMount() {
     axios.get('https://chitter-backend-api.herokuapp.com/peeps')
       .then((res) => this.setState({ posts: res.data }))
+      .then((res) => console.log(this.state))
       .catch(err => console.log(err))
   }
 
@@ -76,10 +77,10 @@ class Interface extends Component {
       'Content-Type': 'application/json',
       'Authorization': 'Token token=' + this.state.session_key
     }
-    axios.delete(`https://chitter-backend-api.herokuapp.com/peeps/${this.state.user_id}`, {
+    axios.delete(`https://chitter-backend-api.herokuapp.com/peeps/1322`, {
       headers: headers
     })
-      .then((res) => console.log(res.data))
+      .then((res) => this.componentDidMount())
   };
 
   render() {

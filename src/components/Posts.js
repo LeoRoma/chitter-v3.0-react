@@ -3,10 +3,11 @@ import Delete from './Delete'
 
 class Posts extends Component {
 
-  deletePeep = () => {
+  deletePeep = (id) => {
+
     this.props.deletePeep()
   }
-  
+
   render() {
     return (
       <div>
@@ -15,6 +16,7 @@ class Posts extends Component {
             <div>
               <h5>{post.user.handle}</h5>
               <h6>{post.body}</h6>
+              <h6>{post.id}</h6>
               <p>{post.created_at}</p>
               <Delete
                 delete={this.deletePeep.bind(this)}
