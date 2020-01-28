@@ -71,13 +71,13 @@ class Interface extends Component {
   };
 
   // delete peep 
-  deletePeep = () => {
-    console.log(this.state.user_id, this.state.session_key)
+  deletePeep = (id) => {
+    console.log(id)
     const headers = {
       'Content-Type': 'application/json',
       'Authorization': 'Token token=' + this.state.session_key
     }
-    axios.delete(`https://chitter-backend-api.herokuapp.com/peeps/1322`, {
+    axios.delete(`https://chitter-backend-api.herokuapp.com/peeps/${id}`, {
       headers: headers
     })
       .then((res) => this.componentDidMount())

@@ -5,7 +5,7 @@ class Posts extends Component {
 
   deletePeep = (id) => {
 
-    this.props.deletePeep()
+    this.props.deletePeep(id)
   }
 
   render() {
@@ -19,7 +19,7 @@ class Posts extends Component {
               <h6>{post.id}</h6>
               <p>{post.created_at}</p>
               <Delete
-                delete={this.deletePeep.bind(this)}
+                delete={this.deletePeep.bind(this, post.id)}
               />
             </div>
           </div>
