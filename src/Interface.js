@@ -68,11 +68,11 @@ class Interface extends Component {
       headers: headers
     })
       .then((res) => this.componentDidMount())
+      .catch(err => console.log(err))
   };
 
   // delete peep 
   deletePeep = (id) => {
-    console.log(id)
     const headers = {
       'Content-Type': 'application/json',
       'Authorization': 'Token token=' + this.state.session_key
@@ -81,7 +81,23 @@ class Interface extends Component {
       headers: headers
     })
       .then((res) => this.componentDidMount())
+      .catch(err => console.log(err))
   };
+
+  // like peep
+  likePeep = (id) => {
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Token token=' + this.state.session_key
+    }
+    axios.put(`https://chitter-backend-api.herokuapp.com/peeps/${id}/likes/${this.state.user_id}`, {
+      headers: headers
+    })
+      .then(res => console.log(res))
+      .then((res) => this.componentDidMount())
+      .catch(err => console.log(err))
+
+  }
 
   render() {
     return (
@@ -100,6 +116,7 @@ class Interface extends Component {
         <Posts
           posts={this.state.posts}
           deletePeep={this.deletePeep.bind(this)}
+          likePeep={this.likePeep.bind(this)}
         />
       </div>
     )

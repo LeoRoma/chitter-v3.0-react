@@ -19,7 +19,7 @@ MacOS
 In terminal:
 ```
 $ git clone https://github.com/LeoRoma/chitterV3.0-react.git
-$ cd squiggler
+$ cd chitterV3.0-react
 $ npm install
 $ npm start
 ```

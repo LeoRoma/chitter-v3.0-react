@@ -1,26 +1,25 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 
+class Like extends Component {
 
-class Delete extends Component {
-
-  handleDelete = event => {
+  handleLike = event => {
     event.preventDefault();
-    this.props.delete()
+    this.props.like()
   };
 
   render() {
     return (
       <div>
-        <Button onClick={this.handleDelete.bind(this)}
+        <Button onClick={this.handleLike.bind(this)}
           type="submit"
           variant="contained"
           color="primary"
         >
-          Delete
+          Like
        </Button>
       </div>
     )
   };
 };
-export default Delete;
+export default Like;
