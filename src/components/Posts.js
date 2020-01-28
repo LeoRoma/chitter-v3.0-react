@@ -4,8 +4,9 @@ import Delete from './Delete'
 class Posts extends Component {
 
   deletePeep = () => {
-    this.props.deletePeep('hello')
+    this.props.deletePeep()
   }
+  
   render() {
     return (
       <div>

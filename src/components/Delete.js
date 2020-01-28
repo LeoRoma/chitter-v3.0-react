@@ -6,7 +6,7 @@ class Delete extends Component {
 
   handleDelete = event => {
     event.preventDefault();
-    this.props.delete("hello")
+    this.props.delete()
   }
 
   render() {

@@ -41,10 +41,9 @@ class SignUp extends Component {
   userLogin = () => {
     this.props.login(this.state);
     this.setState({
-      handle:'',
+      handle: '',
       password: ''
     })
-    console.log(this.state)
   }
 
   // send peep 
@@ -52,35 +51,6 @@ class SignUp extends Component {
     this.setState({ peep: event.target.value })
   }
 
-  // handlePostPeep = event => {
-  //   let data = {
-  //     peep: {
-  //       user_id: sessionStorage.getItem('user_id'),
-  //       body: this.state.peep,
-  //     }
-  //   };
-
-  //   event.preventDefault();
-  //   fetch('https://chitter-backend-api.herokuapp.com/peeps', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-type': 'application/json',
-  //       'Authorization': `Token token=${sessionStorage.getItem('session_key')}`,
-  //     },
-  //     body: JSON.stringify(data)
-  //   })
-  //     .then((response) => console.log(response.json(), "After login:" + this.state.session_key + "ID:" + this.state.user_id))
-  //     .then((data) => {
-  //       // console.log(response)
-  //       console.log("success:", data);
-  //     })
-  //     .catch((error) => {
-  //       console.error('Error:', error);
-
-  //     })
-
-  //   // delete peep 
-  // }
   render() {
     return (
       <div className="container">
@@ -120,9 +90,9 @@ class SignUp extends Component {
           </Button><br />
 
           {/* login button  */}
-          <Login  
-          login={this.userLogin.bind(this)} 
-            />
+          <Login
+            login={this.userLogin.bind(this)}
+          />
         </form>
       </div >
 

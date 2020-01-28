@@ -47,14 +47,13 @@ class Interface extends Component {
       .then(res => this.setState({
         user_id: res.data.user_id,
         session_key: res.data.session_key,
-        // console.log(this.state.user_id, this.state.session_key)
       }))
       .catch(err => console.log(err));
-    console.log(this.state)
   }
 
   // Post peep 
   sendPeep = (peep) => {
+    console.log(this.state.session_key)
     const headers = {
       'Content-Type': 'application/json',
       'Authorization': 'Token token=' + this.state.session_key
@@ -68,18 +67,20 @@ class Interface extends Component {
       headers: headers
     })
       .then((res) => this.componentDidMount())
-      .then((res) => console.log(this.state.session_key, this.state.user_id))
   };
 
-  deletePeep = (hola) => {
-    console.log(hola)
+  // delete peep 
+  deletePeep = () => {
+    console.log(this.state.user_id, this.state.session_key)
     const headers = {
+      'Content-Type': 'application/json',
       'Authorization': 'Token token=' + this.state.session_key
     }
-    axios.delete('https://chitter-backend-api.herokuapp.com/peeps/1653', {
+    axios.delete(`https://chitter-backend-api.herokuapp.com/peeps/${this.state.user_id}`, {
       headers: headers
     })
-  }
+      .then((res) => console.log(res.data))
+  };
 
   render() {
     return (
