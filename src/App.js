@@ -3,9 +3,7 @@ import './App.css';
 
 import Header from './components/Header';
 import Interface from './Interface'
-// import Posts from './components/Posts';
-// import PostPeep from './components/PostPeep'
-// import SignUp from './components/Signup';
+
 
 
 function App() {
@@ -14,7 +12,6 @@ function App() {
     <div>
       <Header />
       <Interface />
-      {/* <Posts /> */}
     </div>
   );
 }

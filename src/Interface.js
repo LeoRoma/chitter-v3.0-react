@@ -46,19 +46,19 @@ class Interface extends Component {
     })
       .then(res => this.setState({
         user_id: res.data.user_id,
-        session_key: res.data.session_key
+        session_key: res.data.session_key,
+        // console.log(this.state.user_id, this.state.session_key)
       }))
       .catch(err => console.log(err));
-    console.log(this.state.user_id, this.state.session_key)
+    console.log(this.state)
   }
 
   // Post peep 
   sendPeep = (peep) => {
-    console.log(peep)
     const headers = {
       'Content-Type': 'application/json',
       'Authorization': 'Token token=' + this.state.session_key
-    }
+    };
     axios.post('https://chitter-backend-api.herokuapp.com/peeps', {
       peep: {
         user_id: this.state.user_id,
@@ -66,7 +66,19 @@ class Interface extends Component {
       }
     }, {
       headers: headers
-    }).then((res) => this.componentDidMount())
+    })
+      .then((res) => this.componentDidMount())
+      .then((res) => console.log(this.state.session_key, this.state.user_id))
+  };
+
+  deletePeep = (hola) => {
+    console.log(hola)
+    const headers = {
+      'Authorization': 'Token token=' + this.state.session_key
+    }
+    axios.delete('https://chitter-backend-api.herokuapp.com/peeps/1653', {
+      headers: headers
+    })
   }
 
   render() {
@@ -79,11 +91,14 @@ class Interface extends Component {
         />
 
         {/* Send a new peep  */}
-        <PostPeep 
-        sendPeep={this.sendPeep.bind(this)}/>
+        <PostPeep
+          sendPeep={this.sendPeep.bind(this)} />
 
         {/* get peeps  */}
-        <Posts posts={this.state.posts} />
+        <Posts
+          posts={this.state.posts}
+          deletePeep={this.deletePeep.bind(this)}
+        />
       </div>
     )
   }

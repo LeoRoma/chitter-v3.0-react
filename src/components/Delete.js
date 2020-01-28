@@ -4,8 +4,9 @@ import Button from '@material-ui/core/Button';
 
 class Delete extends Component {
 
-  handleDelete() {
-    console.log("hello")
+  handleDelete = event => {
+    event.preventDefault();
+    this.props.delete("hello")
   }
 
   render() {
