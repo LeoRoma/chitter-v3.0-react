@@ -52,35 +52,35 @@ class SignUp extends Component {
     this.setState({ peep: event.target.value })
   }
 
-  handlePostPeep = event => {
-    let data = {
-      peep: {
-        user_id: sessionStorage.getItem('user_id'),
-        body: this.state.peep,
-      }
-    };
+  // handlePostPeep = event => {
+  //   let data = {
+  //     peep: {
+  //       user_id: sessionStorage.getItem('user_id'),
+  //       body: this.state.peep,
+  //     }
+  //   };
 
-    event.preventDefault();
-    fetch('https://chitter-backend-api.herokuapp.com/peeps', {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json',
-        'Authorization': `Token token=${sessionStorage.getItem('session_key')}`,
-      },
-      body: JSON.stringify(data)
-    })
-      .then((response) => console.log(response.json(), "After login:" + this.state.session_key + "ID:" + this.state.user_id))
-      .then((data) => {
-        // console.log(response)
-        console.log("success:", data);
-      })
-      .catch((error) => {
-        console.error('Error:', error);
+  //   event.preventDefault();
+  //   fetch('https://chitter-backend-api.herokuapp.com/peeps', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-type': 'application/json',
+  //       'Authorization': `Token token=${sessionStorage.getItem('session_key')}`,
+  //     },
+  //     body: JSON.stringify(data)
+  //   })
+  //     .then((response) => console.log(response.json(), "After login:" + this.state.session_key + "ID:" + this.state.user_id))
+  //     .then((data) => {
+  //       // console.log(response)
+  //       console.log("success:", data);
+  //     })
+  //     .catch((error) => {
+  //       console.error('Error:', error);
 
-      })
+  //     })
 
-    // delete peep 
-  }
+  //   // delete peep 
+  // }
   render() {
     return (
       <div className="container">
