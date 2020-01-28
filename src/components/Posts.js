@@ -9,7 +9,6 @@ class Posts extends Component {
   }
 
   likePeep = (id) => {
-    console.log("hello")
     this.props.likePeep(id)
   }
 
@@ -22,7 +21,7 @@ class Posts extends Component {
               <h5>{post.user.handle}</h5>
               <h6>{post.body}</h6>
               <p>{post.created_at}</p>
-              {/* <p>{post}</p> */}
+              <p>Like: {post.likes.length}</p>
               <Delete
                 delete={this.deletePeep.bind(this, post.id)}
               />

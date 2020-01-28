@@ -15,7 +15,7 @@ class Delete extends Component {
         <Button onClick={this.handleDelete.bind(this)}
           type="submit"
           variant="contained"
-          color="primary"
+          color="secondary"
         >
           Delete
        </Button>

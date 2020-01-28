@@ -39,6 +39,7 @@ class Interface extends Component {
 
   // Login
   login = (currentUser) => {
+    console.log(this.state.session_key)
     axios.post('https://chitter-backend-api.herokuapp.com/sessions/', {
       session: {
         handle: currentUser.handle,
@@ -86,13 +87,16 @@ class Interface extends Component {
 
   // like peep
   likePeep = (id) => {
+    console.log(this.state.session_key)
     const headers = {
-      'Content-Type': 'application/json',
       'Authorization': 'Token token=' + this.state.session_key
     }
     axios.put(`https://chitter-backend-api.herokuapp.com/peeps/${id}/likes/${this.state.user_id}`, {
       headers: headers
-    })
+    },
+      {
+        user: this.state.user_id
+      })
       .then(res => console.log(res))
       .then((res) => this.componentDidMount())
       .catch(err => console.log(err))
