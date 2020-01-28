@@ -8,7 +8,7 @@
 - Logging in
 - Posting peeps
 - Viewing all peeps
-- Deleting peeps (need to implement)
+- Deleting peeps 
 - Liking peeps (need to implement)
 - Unliking peeps (need to implement)
 
