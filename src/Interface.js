@@ -87,19 +87,20 @@ class Interface extends Component {
 
   // like peep
   likePeep = (id) => {
-    console.log(this.state.session_key)
+    console.log(this.state.user_id)
     const headers = {
       'Authorization': 'Token token=' + this.state.session_key
     }
-    axios.put(`https://chitter-backend-api.herokuapp.com/peeps/${id}/likes/${this.state.user_id}`, {
-      headers: headers
+    axios.put(`https://chitter-backend-api.herokuapp.com/peeps/${id}/likes/${this.state.user_id}`, 
+    {
+      likes: {id: this.state.user_id}
     },
-      {
-        user: this.state.user_id
-      })
-      .then(res => console.log(res))
+    {
+      headers: headers
+    })
+      .then(res => console.log(res.data.likes))
       .then((res) => this.componentDidMount())
-      .catch(err => console.log(err))
+      .catch(res => console.log(res.data.likes))
 
   }
 
