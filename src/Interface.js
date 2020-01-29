@@ -98,9 +98,9 @@ class Interface extends Component {
     {
       headers: headers
     })
-      .then(res => console.log(res.data.likes))
+      .then(res => console.log(res))
       .then((res) => this.componentDidMount())
-      .catch(res => console.log(res.data.likes))
+      .catch(err => console.log(err))
 
   }
 
