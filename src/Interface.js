@@ -88,21 +88,36 @@ class Interface extends Component {
   // like peep
   likePeep = (id) => {
     console.log(this.state.user_id)
+    const likes = {
+      id: this.state.user_id
+    };
     const headers = {
       'Authorization': 'Token token=' + this.state.session_key
-    }
-    axios.put(`https://chitter-backend-api.herokuapp.com/peeps/${id}/likes/${this.state.user_id}`, 
-    {
-      likes: {id: this.state.user_id}
-    },
-    {
-      headers: headers
-    })
+    };
+    axios.put(`https://chitter-backend-api.herokuapp.com/peeps/${id}/likes/${this.state.user_id}`,
+      {
+        likes: likes
+      },
+      {
+        headers: headers
+      })
       .then(res => console.log(res))
       .then((res) => this.componentDidMount())
       .catch(err => console.log(err))
+  };
 
-  }
+  unlikePeep = (id) => {
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Token token=' + this.state.session_key
+    }
+    axios.delete(`https://chitter-backend-api.herokuapp.com/peeps/${id}/likes/${this.state.user_id}`, {
+      headers: headers
+    })
+      .then((res) => this.componentDidMount())
+      .catch(err => console.log(err))
+  };
+
 
   render() {
     return (
@@ -122,6 +137,7 @@ class Interface extends Component {
           posts={this.state.posts}
           deletePeep={this.deletePeep.bind(this)}
           likePeep={this.likePeep.bind(this)}
+          unlikePeep={this.unlikePeep.bind(this)}
         />
       </div>
     )

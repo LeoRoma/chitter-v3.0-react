@@ -12,6 +12,10 @@ class Posts extends Component {
     this.props.likePeep(id)
   }
 
+  unlikePeep = (id) => {
+    this.props.unlikePeep(id)
+  }
+
   render() {
     return (
       <div>
@@ -27,6 +31,7 @@ class Posts extends Component {
               />
               <Like
                 like={this.likePeep.bind(this, post.id)}
+                unlike={this.unlikePeep.bind(this, post.id)}
               />
             </div>
           </div>

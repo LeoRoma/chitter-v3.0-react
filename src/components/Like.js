@@ -12,11 +12,6 @@ class Like extends Component {
   handleLike = event => {
     event.preventDefault();
     this.props.like()
-    this.setState(previousState => {
-      return {
-        liked: !previousState.liked
-      };
-    });
   };
 
   render() {
