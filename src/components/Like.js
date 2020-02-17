@@ -2,48 +2,35 @@ import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 
 class Like extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      liked: false
-    };
-    this.handleLike = this.handleLike.bind(this);
-  }
+
+
   handleLike = event => {
     event.preventDefault();
     this.props.like()
   };
 
+  handleUnlike = event => {
+    event.preventDefault();
+    this.props.unlike()
+  };
+
   render() {
-    const like = (
+    return (
       <div>
-        <Button
+        <Button onClick={this.handleLike.bind(this)}
           type="submit"
           variant="contained"
           color="primary"
         >
           Like
        </Button>
-      </div>
-    )
-
-    const unlike = (
-      <div>
-        <Button
+        <Button onClick={this.handleUnlike.bind(this)}
           type="submit"
           variant="contained"
           color="primary"
         >
           Unlike
         </Button>
-      </div>
-    )
-
-    return (
-      <div>
-        <div onClick={this.handleLike.bind(this)}>
-          {this.state.liked ? unlike : like}
-        </div>
       </div>
     )
   };

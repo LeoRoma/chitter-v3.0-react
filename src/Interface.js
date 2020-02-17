@@ -21,7 +21,6 @@ class Interface extends Component {
   componentDidMount() {
     axios.get('https://chitter-backend-api.herokuapp.com/peeps')
       .then((res) => this.setState({ posts: res.data }))
-      .then((res) => console.log(this.state.posts))
       .catch(err => console.log(err))
   }
 
@@ -56,21 +55,9 @@ class Interface extends Component {
         session_key: res.data.session_key,
       }))
       .catch(err => console.log(err));
-      // console.log(this.state.user_id)
+    // console.log(this.state.user_id)
     // this.hiddenDeleteBtn();
   };
-
-  hiddenDeleteBtn() {
-    const posts = this.state.posts;
-    const userId = this.state.user_id;
-    for (let i = 0; i < posts.length; i++) {
- 
-      if(posts[i].id === userId){
-        console.log('hello')
-      }
-    }
-  }
-
 
   // Post peep 
   sendPeep = (peep) => {
