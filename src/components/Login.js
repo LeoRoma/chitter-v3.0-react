@@ -2,16 +2,11 @@ import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 
 class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    }
-  }
 
   handleLogin = event => {
     event.preventDefault();
     this.props.login()
-  }
+  };
 
   render() {
     return (
@@ -24,8 +19,8 @@ class Login extends Component {
           Login
        </Button>
       </div >
-    )
-  }
-}
+    );
+  };
+};
 
 export default Login;

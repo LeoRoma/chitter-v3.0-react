@@ -4,8 +4,9 @@ import Like from './Like'
 
 class Posts extends Component {
 
-  deletePeep = (id) => {
+  deletePeep = (id, user_id) => {
     this.props.deletePeep(id)
+    console.log("Id:", id, "User id:", user_id )
   }
 
   likePeep = (id) => {
@@ -27,7 +28,7 @@ class Posts extends Component {
               <p>{post.created_at}</p>
               <p>Like: {post.likes.length}</p>
               <Delete
-                delete={this.deletePeep.bind(this, post.id)}
+                delete={this.deletePeep.bind(this, post.id, post.user.id)}
               />
               <Like
                 like={this.likePeep.bind(this, post.id)}

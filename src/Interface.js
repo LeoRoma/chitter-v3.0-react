@@ -25,6 +25,13 @@ class Interface extends Component {
       .catch(err => console.log(err))
   }
 
+  getPeeps(){
+    axios.get('https://chitter-backend-api.herokuapp.com/peeps')
+    .then((res) => this.setState({ posts: res.data }))
+    .then((res) => console.log(this.state))
+    .catch(err => console.log(err))
+  }
+
   // Sign Up
   signUp = (newUser) => {
     axios.post('https://chitter-backend-api.herokuapp.com/users', {
@@ -81,7 +88,7 @@ class Interface extends Component {
     axios.delete(`https://chitter-backend-api.herokuapp.com/peeps/${id}`, {
       headers: headers
     })
-      .then((res) => this.componentDidMount())
+      .then((res) => this.getPeeps())
       .catch(err => console.log(err))
   };
 
@@ -102,7 +109,7 @@ class Interface extends Component {
         headers: headers
       })
       .then(res => console.log(res))
-      .then((res) => this.componentDidMount())
+      .then((res) => this.getPeeps())
       .catch(err => console.log(err))
   };
 
@@ -114,7 +121,7 @@ class Interface extends Component {
     axios.delete(`https://chitter-backend-api.herokuapp.com/peeps/${id}/likes/${this.state.user_id}`, {
       headers: headers
     })
-      .then((res) => this.componentDidMount())
+      .then((res) => this.getPeeps())
       .catch(err => console.log(err))
   };
 

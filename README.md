@@ -12,6 +12,10 @@
 - Liking peeps (need to implement)
 - Unliking peeps (need to implement)
 
+## Tech Stack
+- React
+- Axios
+
 ## Run it yourself
 Prequisites
 Node
