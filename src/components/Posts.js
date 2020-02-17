@@ -3,19 +3,28 @@ import Delete from './Delete'
 import Like from './Like'
 
 class Posts extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      hidden: true
+    }
+  };
 
   deletePeep = (id, user_id) => {
     this.props.deletePeep(id)
-    console.log("Id:", id, "User id:", user_id )
-  }
+    console.log("Id:", id, "User id:", user_id)
+    this.setState(
+      { hidden: !this.state.hidden }
+    )
+  };
 
   likePeep = (id) => {
     this.props.likePeep(id)
-  }
+  };
 
   unlikePeep = (id) => {
     this.props.unlikePeep(id)
-  }
+  };
 
   render() {
     return (
@@ -27,9 +36,13 @@ class Posts extends Component {
               <h6>{post.body}</h6>
               <p>{post.created_at}</p>
               <p>Like: {post.likes.length}</p>
-              <Delete
-                delete={this.deletePeep.bind(this, post.id, post.user.id)}
-              />
+              {
+                this.state.hidden ?
+                  null : <Delete
+                    delete={this.deletePeep.bind(this, post.id, post.user.id)}
+                  />
+              }
+
               <Like
                 like={this.likePeep.bind(this, post.id)}
                 unlike={this.unlikePeep.bind(this, post.id)}
