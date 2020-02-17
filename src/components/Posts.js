@@ -6,13 +6,13 @@ class Posts extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isHidden: true
+      isHidden: true,
+      userId: ''
     }
   };
 
-  deletePeep = (id, user_id) => {
+  deletePeep = (id) => {
     this.props.deletePeep(id)
-    console.log("Id:", id, "User id:", user_id)
     this.setState(
       { hidden: !this.state.hidden }
     )
@@ -27,17 +27,7 @@ class Posts extends Component {
     this.props.unlikePeep(id)
   };
 
- 
-
   render() {
-    const isHidden = this.state.isHidden;
-    const userId = this.props.userId;
-    const posts = this.props.posts;
-    for(let i = 0; i < posts.length; i++){
-      if (userId === posts[i].user.id){
-        console.log(userId, posts[i].user.id)
-      }
-    }
     return (
       <div>
         {this.props.posts.map((post) =>
@@ -48,7 +38,7 @@ class Posts extends Component {
               <h6>{post.user.id}</h6>
               <p>{post.created_at}</p>
               <p>Like: {post.likes.length}</p>
-              {
+              {/* {
                 // if (this.props.posts.user_id === post.user.id){
                 //   this.state.hidden === true
                 //   <Delete
@@ -57,11 +47,11 @@ class Posts extends Component {
                 // }else{
                 //   this.state.hidden === null
                 // }
-               this.state.isHidden?
-                null: <Delete
-                delete={this.deletePeep.bind(this, post.id, post.user.id)}
-              />
-              }
+                this.state.isHidden ?
+                  null : <Delete
+                    delete={this.deletePeep.bind(this, post.id, post.user.id)}
+                  />
+              } */}
 
               <Like
                 like={this.likePeep.bind(this, post.id)}

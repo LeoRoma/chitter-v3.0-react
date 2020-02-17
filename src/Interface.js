@@ -9,12 +9,11 @@ class Interface extends Component {
     super(props)
     this.state = {
       posts: [],
-      peep_id: '',
       handle: '',
       password: '',
       user_id: '',
       session_key: '',
-      isLoaded: false,
+      isHidden: true,
     }
   }
 
@@ -57,7 +56,21 @@ class Interface extends Component {
         session_key: res.data.session_key,
       }))
       .catch(err => console.log(err));
+      // console.log(this.state.user_id)
+    // this.hiddenDeleteBtn();
+  };
+
+  hiddenDeleteBtn() {
+    const posts = this.state.posts;
+    const userId = this.state.user_id;
+    for (let i = 0; i < posts.length; i++) {
+ 
+      if(posts[i].id === userId){
+        console.log('hello')
+      }
+    }
   }
+
 
   // Post peep 
   sendPeep = (peep) => {
@@ -130,6 +143,8 @@ class Interface extends Component {
         <SignUp
           signUp={this.signUp.bind(this)}
           login={this.login.bind(this)}
+          posts={this.state.posts}
+          userId={this.state.user_id}
         />
 
         {/* Send a new peep  */}
@@ -139,7 +154,6 @@ class Interface extends Component {
         {/* get peeps  */}
         <Posts
           posts={this.state.posts}
-          peepId={this.state.peep_id}
           userId={this.state.user_id}
           deletePeep={this.deletePeep.bind(this)}
           likePeep={this.likePeep.bind(this)}

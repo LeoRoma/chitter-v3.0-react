@@ -42,7 +42,7 @@ class SignUp extends Component {
     this.props.login(this.state);
     this.setState({
       handle: '',
-      password: ''
+      password: '',
     })
   }
 
