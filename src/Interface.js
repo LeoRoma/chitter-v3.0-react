@@ -9,6 +9,7 @@ class Interface extends Component {
     super(props)
     this.state = {
       posts: [],
+      peep_id: '',
       handle: '',
       password: '',
       user_id: '',
@@ -21,15 +22,14 @@ class Interface extends Component {
   componentDidMount() {
     axios.get('https://chitter-backend-api.herokuapp.com/peeps')
       .then((res) => this.setState({ posts: res.data }))
-      .then((res) => console.log(this.state))
+      .then((res) => console.log(this.state.posts))
       .catch(err => console.log(err))
   }
 
-  getPeeps(){
+  getPeeps() {
     axios.get('https://chitter-backend-api.herokuapp.com/peeps')
-    .then((res) => this.setState({ posts: res.data }))
-    .then((res) => console.log(this.state))
-    .catch(err => console.log(err))
+      .then((res) => this.setState({ posts: res.data }))
+      .catch(err => console.log(err))
   }
 
   // Sign Up
@@ -46,7 +46,6 @@ class Interface extends Component {
 
   // Login
   login = (currentUser) => {
-    console.log(this.state.session_key)
     axios.post('https://chitter-backend-api.herokuapp.com/sessions/', {
       session: {
         handle: currentUser.handle,
@@ -62,7 +61,6 @@ class Interface extends Component {
 
   // Post peep 
   sendPeep = (peep) => {
-    console.log(this.state.session_key)
     const headers = {
       'Content-Type': 'application/json',
       'Authorization': 'Token token=' + this.state.session_key
@@ -94,7 +92,6 @@ class Interface extends Component {
 
   // like peep
   likePeep = (id) => {
-    console.log(this.state.user_id)
     const likes = {
       id: this.state.user_id
     };
@@ -142,6 +139,8 @@ class Interface extends Component {
         {/* get peeps  */}
         <Posts
           posts={this.state.posts}
+          peepId={this.state.peep_id}
+          userId={this.state.user_id}
           deletePeep={this.deletePeep.bind(this)}
           likePeep={this.likePeep.bind(this)}
           unlikePeep={this.unlikePeep.bind(this)}
