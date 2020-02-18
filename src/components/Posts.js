@@ -11,10 +11,6 @@ class Posts extends Component {
     }
   };
 
-  getUserId =() => {
-
-  }
-
   deletePeep = (id) => {
     this.props.deletePeep(id)
     console.log(this.state.user_id)
@@ -36,6 +32,13 @@ class Posts extends Component {
   };
 
   render() {
+    console.log(this.props.userId)
+    const userId = this.props.posts.map((post) => {
+      if (this.props.userId === post.user.id){
+        console.log('hello')
+      }
+      // console.log(this.props.userId)
+    })
     return (
       <div>
         {this.props.posts.map((post) =>
