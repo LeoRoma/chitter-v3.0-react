@@ -141,7 +141,7 @@ class Interface extends Component {
         {/* get peeps  */}
         <Posts
           posts={this.state.posts}
-          userId={this.state.user_id}
+          thisUserId={this.state.user_id}
           deletePeep={this.deletePeep.bind(this)}
           liked={this.state.liked}
           likePeep={this.likePeep.bind(this)}

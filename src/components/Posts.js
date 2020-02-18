@@ -7,19 +7,34 @@ class Posts extends Component {
     super(props);
     this.state = {
       isHidden: true,
-      liked: ''
+      liked: '',
+      showDeleteBtn: []
     }
   };
 
   deletePeep = (id) => {
     this.props.deletePeep(id)
-    console.log(this.state.user_id)
   };
+  // componentDidMount(){
+  //   this.setState({
+  //     liked: this.props.thisUserId
+  //   })
+  // }
+  componentDidMount(){
+    if (this.props.userId === this.props.thisUserId){
+      console.log('hi')
+      this.setState({
+        isHidden: false
+      })
+    }
+    console.log(this.state.isHidden)
+    console.log(this.props.thisUserId)
+  }
 
   likePeep = (id) => {
     this.props.likePeep(id)
     console.log(this.props)
-    if (this.props.liked === true){
+    if (this.props.liked === true) {
       this.setState({
         liked: 'You liked this peep'
       })
@@ -32,13 +47,6 @@ class Posts extends Component {
   };
 
   render() {
-    console.log(this.props.userId)
-    const userId = this.props.posts.map((post) => {
-      if (this.props.userId === post.user.id){
-        console.log('hello')
-      }
-      // console.log(this.props.userId)
-    })
     return (
       <div>
         {this.props.posts.map((post) =>
@@ -46,7 +54,7 @@ class Posts extends Component {
             <div>
               <h5>{post.user.handle}</h5>
               <h6>{post.body}</h6>
-              <h6>{this.state.liked}</h6>
+              <h6>{this.props.userId}</h6>
               <p>{post.created_at}</p>
               <p>Like: {post.likes.length}</p>
               {/* {
@@ -55,7 +63,9 @@ class Posts extends Component {
                     delete={this.deletePeep.bind(this, post.id, post.user.id)}
                   />
               } */}
-              <Delete
+              <Delete 
+                thisUserId={this.props.thisUserId}
+                userId={post.user.id}
                 delete={this.deletePeep.bind(this, post.id, post.user.id)}
               />
               <Like
