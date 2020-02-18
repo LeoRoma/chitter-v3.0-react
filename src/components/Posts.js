@@ -7,19 +7,27 @@ class Posts extends Component {
     super(props);
     this.state = {
       isHidden: true,
-      userId: ''
+      liked: ''
     }
   };
 
+  getUserId =() => {
+
+  }
+
   deletePeep = (id) => {
     this.props.deletePeep(id)
-    this.setState(
-      { hidden: !this.state.hidden }
-    )
+    console.log(this.state.user_id)
   };
 
   likePeep = (id) => {
     this.props.likePeep(id)
+    console.log(this.props.liked)
+    if (this.props.liked === true){
+      this.setState({
+        liked: 'You liked this peep'
+      })
+    }
     console.log(this.props.userId)
   };
 
@@ -35,7 +43,7 @@ class Posts extends Component {
             <div>
               <h5>{post.user.handle}</h5>
               <h6>{post.body}</h6>
-              <h6>{post.user.id}</h6>
+              <h6>{this.state.liked}</h6>
               <p>{post.created_at}</p>
               <p>Like: {post.likes.length}</p>
               {/* {
@@ -52,7 +60,9 @@ class Posts extends Component {
                     delete={this.deletePeep.bind(this, post.id, post.user.id)}
                   />
               } */}
-
+              <Delete
+                delete={this.deletePeep.bind(this, post.id, post.user.id)}
+              />
               <Like
                 like={this.likePeep.bind(this, post.id)}
                 unlike={this.unlikePeep.bind(this, post.id)}
@@ -67,4 +77,4 @@ class Posts extends Component {
 }
 
 
-export default Posts
+export default Posts;

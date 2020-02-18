@@ -44,7 +44,7 @@ class SignUp extends Component {
       handle: '',
       password: '',
     })
-  }
+  };
 
   // send peep 
   handlePeep = event => {

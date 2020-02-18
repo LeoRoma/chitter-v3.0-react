@@ -14,21 +14,20 @@ class Interface extends Component {
       user_id: '',
       session_key: '',
       isHidden: true,
+      liked: false
     }
-  }
+  };
 
   // get peeps
   componentDidMount() {
-    axios.get('https://chitter-backend-api.herokuapp.com/peeps')
-      .then((res) => this.setState({ posts: res.data }))
-      .catch(err => console.log(err))
-  }
+    this.getPeeps()
+  };
 
   getPeeps() {
     axios.get('https://chitter-backend-api.herokuapp.com/peeps')
       .then((res) => this.setState({ posts: res.data }))
       .catch(err => console.log(err))
-  }
+  };
 
   // Sign Up
   signUp = (newUser) => {
@@ -55,8 +54,6 @@ class Interface extends Component {
         session_key: res.data.session_key,
       }))
       .catch(err => console.log(err));
-    // console.log(this.state.user_id)
-    // this.hiddenDeleteBtn();
   };
 
   // Post peep 
@@ -107,7 +104,10 @@ class Interface extends Component {
       })
       .then(res => console.log(res))
       .then((res) => this.getPeeps())
-      .catch(err => console.log(err))
+      .catch(err => console.log(err));
+      this.setState({
+        liked: true
+      })
   };
 
   unlikePeep = (id) => {
@@ -143,6 +143,7 @@ class Interface extends Component {
           posts={this.state.posts}
           userId={this.state.user_id}
           deletePeep={this.deletePeep.bind(this)}
+          liked={this.state.liked}
           likePeep={this.likePeep.bind(this)}
           unlikePeep={this.unlikePeep.bind(this)}
         />
