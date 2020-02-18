@@ -22,7 +22,7 @@ class Posts extends Component {
 
   likePeep = (id) => {
     this.props.likePeep(id)
-    console.log(this.props.liked)
+    console.log(this.props)
     if (this.props.liked === true){
       this.setState({
         liked: 'You liked this peep'
@@ -47,14 +47,6 @@ class Posts extends Component {
               <p>{post.created_at}</p>
               <p>Like: {post.likes.length}</p>
               {/* {
-                // if (this.props.posts.user_id === post.user.id){
-                //   this.state.hidden === true
-                //   <Delete
-                //     delete={this.deletePeep.bind(this, post.id, post.user.id)}
-                //   />
-                // }else{
-                //   this.state.hidden === null
-                // }
                 this.state.isHidden ?
                   null : <Delete
                     delete={this.deletePeep.bind(this, post.id, post.user.id)}

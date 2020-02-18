@@ -105,9 +105,9 @@ class Interface extends Component {
       .then(res => console.log(res))
       .then((res) => this.getPeeps())
       .catch(err => console.log(err));
-      this.setState({
-        liked: true
-      })
+      this.setState(prevState => ({
+        liked: !prevState.liked
+      }));
   };
 
   unlikePeep = (id) => {
