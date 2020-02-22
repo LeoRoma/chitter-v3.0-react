@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import Posts from './components/Posts';
-import PostPeep from './components/PostPeep'
+
+import Peep from './components/Peep';
+import Peeps from './components/Posts';
+import PostPeep from './components/PostPeep';
 import SignUp from './components/Signup';
 import axios from 'axios';
 
@@ -8,7 +10,7 @@ class Interface extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      posts: [],
+      peeps: [],
       handle: '',
       password: '',
       user_id: '',
@@ -105,9 +107,9 @@ class Interface extends Component {
       .then(res => console.log(res))
       .then((res) => this.getPeeps())
       .catch(err => console.log(err));
-      this.setState(prevState => ({
-        liked: !prevState.liked
-      }));
+    this.setState(prevState => ({
+      liked: !prevState.liked
+    }));
   };
 
   unlikePeep = (id) => {
@@ -138,9 +140,12 @@ class Interface extends Component {
         <PostPeep
           sendPeep={this.sendPeep.bind(this)} />
 
+        {/* get peep  */}
+        <Peep />
+        
         {/* get peeps  */}
-        <Posts
-          posts={this.state.posts}
+        <Peeps
+          peeps={this.state.peeps}
           thisUserId={this.state.user_id}
           deletePeep={this.deletePeep.bind(this)}
           liked={this.state.liked}

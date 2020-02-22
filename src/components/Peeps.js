@@ -15,11 +15,7 @@ class Posts extends Component {
   deletePeep = (id) => {
     this.props.deletePeep(id)
   };
-  // componentDidMount(){
-  //   this.setState({
-  //     liked: this.props.thisUserId
-  //   })
-  // }
+  
   componentDidMount(){
     if (this.props.userId === this.props.thisUserId){
       console.log('hi')
@@ -49,14 +45,14 @@ class Posts extends Component {
   render() {
     return (
       <div>
-        {this.props.posts.map((post) =>
+        {this.props.peeps.map((peep) =>
           <div>
             <div>
-              <h5>{post.user.handle}</h5>
-              <h6>{post.body}</h6>
+              <h5>{peep.user.handle}</h5>
+              <h6>{peep.body}</h6>
               <h6>{this.props.userId}</h6>
-              <p>{post.created_at}</p>
-              <p>Like: {post.likes.length}</p>
+              <p>{peep.created_at}</p>
+              <p>Like: {peep.likes.length}</p>
               {/* {
                 this.state.isHidden ?
                   null : <Delete
@@ -65,8 +61,8 @@ class Posts extends Component {
               } */}
               <Delete 
                 thisUserId={this.props.thisUserId}
-                userId={post.user.id}
-                delete={this.deletePeep.bind(this, post.id, post.user.id)}
+                userId={peep.user.id}
+                delete={this.deletePeep.bind(this, peep.id)}
               />
               <Like
                 like={this.likePeep.bind(this, post.id)}
