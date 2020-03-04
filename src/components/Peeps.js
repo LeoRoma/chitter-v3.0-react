@@ -64,6 +64,7 @@ class Posts extends Component {
               handle={peep.user.handle}
               createdAt={this.time(peep.created_at)}
               body={peep.body}
+              user_id={this.props.user_id}
             />
 
             {/* <h5>{peep.user.handle}</h5>

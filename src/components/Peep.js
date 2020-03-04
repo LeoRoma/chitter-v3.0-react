@@ -10,10 +10,12 @@ class Peep extends Component {
     };
   };
 
+  componentDidMount() {
+    if (this.state.userId === this.props.user_id) {
+      console.log('done')
+    }
+  };
 
-  componentDidMount(){
-    console.log(this.state.userId)
-  }
   render() {
     const peep = this.props.peep
     const handle = this.props.handle
