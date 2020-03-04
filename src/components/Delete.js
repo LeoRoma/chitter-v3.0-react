@@ -3,14 +3,12 @@ import Button from '@material-ui/core/Button';
 
 
 class Delete extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       isHidden: true,
     }
   };
-
-  
 
   handleDelete = event => {
     event.preventDefault();

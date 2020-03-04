@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-
+import Like from './Like';
+import Delete from './Delete';
 
 class Peep extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isMine: false,
-      userId: sessionStorage.getItem('user_id')
     };
   };
 
-  
+
   // componentDidMount(){
   //   if(this.props.peep.user.id.toString(10)=== this.state.user_id) {
   //     this.setState({isMine:true})
@@ -23,10 +23,14 @@ class Peep extends Component {
     const body = this.props.body
     return (
       <div>
-        <h2>{handle}</h2>
-        <h5>{createdAt}</h5>
-        <h3>{body}</h3>
+        <div>
+          <h2>{handle}</h2>
+          <h5>{createdAt}</h5>
+          <h3>{body}</h3>
+          <Delete />
+        </div>
       </div>
+
     )
   }
 };

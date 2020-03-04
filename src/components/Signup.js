@@ -9,10 +9,7 @@ class SignUp extends Component {
     super(props);
     this.state = {
       handle: '',
-      password: '',
-      user_id: '',
-      session_key: '',
-      peep: ""
+      password: ''
     }
   }
   handleHandleChange = event => {
@@ -45,11 +42,6 @@ class SignUp extends Component {
       password: '',
     })
   };
-
-  // send peep 
-  handlePeep = event => {
-    this.setState({ peep: event.target.value })
-  }
 
   render() {
     return (

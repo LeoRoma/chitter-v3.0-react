@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-// import Delete from './Delete;'
-import Like from './Like';
+// import Delete from './Delete';
+// import Like from './Like';
 import Peep from './Peep';
 
 class Posts extends Component {

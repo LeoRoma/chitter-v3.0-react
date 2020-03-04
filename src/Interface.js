@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import Peep from './components/Peep';
 import Peeps from './components/Peeps';
 import PostPeep from './components/PostPeep';
 import SignUp from './components/Signup';
@@ -15,8 +14,6 @@ class Interface extends Component {
       password: '',
       user_id: '',
       session_key: '',
-      isHidden: true,
-      liked: false
     }
   };
 
@@ -55,9 +52,7 @@ class Interface extends Component {
         user_id: res.data.user_id,
         session_key: res.data.session_key,
       }))
-      .then(res => {
-        sessionStorage.setItem('user_id', res.data.user_id)
-      })
+
       .catch(err => console.log(err));
   };
 
@@ -135,23 +130,16 @@ class Interface extends Component {
         <SignUp
           signUp={this.signUp.bind(this)}
           login={this.login.bind(this)}
-          posts={this.state.posts}
-          userId={this.state.user_id}
         />
 
         {/* Send a new peep  */}
         <PostPeep
           sendPeep={this.sendPeep.bind(this)} />
 
-        {/* get peep  */}
-        <Peep />
-        
         {/* get peeps  */}
         <Peeps
           peeps={this.state.peeps}
-          thisUserId={this.state.user_id}
           deletePeep={this.deletePeep.bind(this)}
-          liked={this.state.liked}
           likePeep={this.likePeep.bind(this)}
           unlikePeep={this.unlikePeep.bind(this)}
         />
