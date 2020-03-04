@@ -17,15 +17,6 @@ class Posts extends Component {
     this.props.deletePeep(id)
   };
 
-  componentDidMount() {
-    if (this.props.userId === this.props.thisUserId) {
-      console.log('hi')
-      this.setState({
-        isHidden: false
-      })
-    }
-  }
-
   getUserId = () => {
     this.props.getUserId()
     console.log('hello')
@@ -64,7 +55,7 @@ class Posts extends Component {
               handle={peep.user.handle}
               createdAt={this.time(peep.created_at)}
               body={peep.body}
-              user_id={this.props.user_id}
+              isMine={this.props.isMine}
             />
 
             {/* <h5>{peep.user.handle}</h5>

@@ -16,18 +16,25 @@ class Delete extends Component {
   };
 
   render() {
-    // console.log(this.props.thisUserId)
-    return (
-      <div>
-        <Button onClick={this.handleDelete.bind(this)}
-          type="submit"
-          variant="contained"
-          color="secondary"
-        >
-          Delete
-       </Button>
-      </div>
-    )
+    if (this.props.isMine) {
+      return (
+        <div>
+          <Button onClick={this.handleDelete.bind(this)}
+            type="submit"
+            variant="contained"
+            color="secondary"
+          >
+            Delete
+         </Button>
+        </div>
+      )
+    } else {
+      return (
+        <>
+        </>
+      )
+    }
+
   };
 };
 export default Delete;

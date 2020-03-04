@@ -14,6 +14,7 @@ class Interface extends Component {
       password: '',
       user_id: '',
       session_key: '',
+      isMine: false
     }
   };
 
@@ -54,6 +55,9 @@ class Interface extends Component {
         session_key: res.data.session_key,
       }))
       .catch(err => console.log(err));
+    this.setState({
+      isMine: true
+    })
   };
 
   getUserId = () => {
@@ -141,7 +145,7 @@ class Interface extends Component {
         {/* get peeps  */}
         <Peeps
           peeps={this.state.peeps}
-          user_id={this.state.user_id}
+          isMine={this.state.isMine}
           deletePeep={this.deletePeep.bind(this)}
           likePeep={this.likePeep.bind(this)}
           unlikePeep={this.unlikePeep.bind(this)}
