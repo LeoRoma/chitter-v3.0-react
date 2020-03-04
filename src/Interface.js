@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import Peep from './components/Peep';
-import Peeps from './components/Posts';
+import Peeps from './components/Peeps';
 import PostPeep from './components/PostPeep';
 import SignUp from './components/Signup';
 import axios from 'axios';
@@ -27,7 +27,7 @@ class Interface extends Component {
 
   getPeeps() {
     axios.get('https://chitter-backend-api.herokuapp.com/peeps')
-      .then((res) => this.setState({ posts: res.data }))
+      .then((res) => this.setState({ peeps: res.data }))
       .catch(err => console.log(err))
   };
 
@@ -55,6 +55,9 @@ class Interface extends Component {
         user_id: res.data.user_id,
         session_key: res.data.session_key,
       }))
+      .then(res => {
+        sessionStorage.setItem('user_id', res.data.user_id)
+      })
       .catch(err => console.log(err));
   };
 

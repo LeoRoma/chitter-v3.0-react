@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import Delete from './Delete'
-import Like from './Like'
+// import Delete from './Delete;'
+import Like from './Like';
+import Peep from './Peep';
 
 class Posts extends Component {
   constructor(props) {
@@ -15,16 +16,14 @@ class Posts extends Component {
   deletePeep = (id) => {
     this.props.deletePeep(id)
   };
-  
-  componentDidMount(){
-    if (this.props.userId === this.props.thisUserId){
+
+  componentDidMount() {
+    if (this.props.userId === this.props.thisUserId) {
       console.log('hi')
       this.setState({
         isHidden: false
       })
     }
-    console.log(this.state.isHidden)
-    console.log(this.props.thisUserId)
   }
 
   likePeep = (id) => {
@@ -42,33 +41,42 @@ class Posts extends Component {
     this.props.unlikePeep(id)
   };
 
+  time = (timestamp) => {
+    const date = timestamp.slice(0, 10);
+    const time = timestamp.slice(11, 19);
+    const newTime = date + ' @ ' + time;
+    return newTime;
+  }
+
   render() {
+    const peeps = this.props.peeps;
     return (
       <div>
-        {this.props.peeps.map((peep) =>
+        {peeps.map((peep) =>
+
           <div>
-            <div>
-              <h5>{peep.user.handle}</h5>
+            <Peep key={peep.id}
+              handle={peep.user.handle}
+              createdAt={this.time(peep.created_at)}
+              body={peep.body}
+            />
+
+            {/* <h5>{peep.user.handle}</h5>
               <h6>{peep.body}</h6>
               <h6>{this.props.userId}</h6>
               <p>{peep.created_at}</p>
-              <p>Like: {peep.likes.length}</p>
-              {/* {
-                this.state.isHidden ?
-                  null : <Delete
-                    delete={this.deletePeep.bind(this, post.id, post.user.id)}
-                  />
-              } */}
-              <Delete 
+              <p>Like: {peep.likes.length}</p> */}
+
+            {/* <Delete
                 thisUserId={this.props.thisUserId}
                 userId={peep.user.id}
                 delete={this.deletePeep.bind(this, peep.id)}
-              />
-              <Like
-                like={this.likePeep.bind(this, post.id)}
-                unlike={this.unlikePeep.bind(this, post.id)}
-              />
-            </div>
+              /> */}
+            {/* <Like
+                like={this.likePeep.bind(this, peep.id)}
+                unlike={this.unlikePeep.bind(this, peep.id)}
+              /> */}
+
           </div>
         )}
 
