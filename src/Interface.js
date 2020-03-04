@@ -25,6 +25,7 @@ class Interface extends Component {
   getPeeps() {
     axios.get('https://chitter-backend-api.herokuapp.com/peeps')
       .then((res) => this.setState({ peeps: res.data }))
+      .then((res) => console.log(this.state))
       .catch(err => console.log(err))
   };
 
@@ -52,9 +53,12 @@ class Interface extends Component {
         user_id: res.data.user_id,
         session_key: res.data.session_key,
       }))
-
       .catch(err => console.log(err));
   };
+
+  getUserId = () => {
+    sessionStorage.setItem('user_id', this.state.user_id)
+  }
 
   // Post peep 
   sendPeep = (peep) => {
@@ -105,9 +109,6 @@ class Interface extends Component {
       .then(res => console.log(res))
       .then((res) => this.getPeeps())
       .catch(err => console.log(err));
-    this.setState(prevState => ({
-      liked: !prevState.liked
-    }));
   };
 
   unlikePeep = (id) => {
@@ -130,6 +131,7 @@ class Interface extends Component {
         <SignUp
           signUp={this.signUp.bind(this)}
           login={this.login.bind(this)}
+          getUserId={this.getUserId.bind(this)}
         />
 
         {/* Send a new peep  */}

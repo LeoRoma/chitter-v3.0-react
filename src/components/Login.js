@@ -6,6 +6,7 @@ class Login extends Component {
   handleLogin = event => {
     event.preventDefault();
     this.props.login()
+    this.props.getUserId()
   };
 
   render() {

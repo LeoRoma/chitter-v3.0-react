@@ -37,11 +37,15 @@ class SignUp extends Component {
   // login 
   userLogin = () => {
     this.props.login(this.state);
-    this.setState({
-      handle: '',
-      password: '',
-    })
+    // this.setState({
+    //   handle: '',
+    //   password: '',
+    // })
   };
+
+  getUserId = () => {
+    this.props.getUserId()
+  }
 
   render() {
     return (
@@ -84,6 +88,7 @@ class SignUp extends Component {
           {/* login button  */}
           <Login
             login={this.userLogin.bind(this)}
+            getUserId={this.getUserId.bind(this)}
           />
         </form>
       </div >

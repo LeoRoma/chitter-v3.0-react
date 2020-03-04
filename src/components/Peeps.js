@@ -26,6 +26,11 @@ class Posts extends Component {
     }
   }
 
+  getUserId = () => {
+    this.props.getUserId()
+    console.log('hello')
+  }
+
   likePeep = (id) => {
     this.props.likePeep(id)
     console.log(this.props)

@@ -6,16 +6,14 @@ class Peep extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isMine: false,
+      userId: sessionStorage.getItem('user_id')
     };
   };
 
 
-  // componentDidMount(){
-  //   if(this.props.peep.user.id.toString(10)=== this.state.user_id) {
-  //     this.setState({isMine:true})
-  //   }
-  // }
+  componentDidMount(){
+    console.log(this.state.userId)
+  }
   render() {
     const peep = this.props.peep
     const handle = this.props.handle
