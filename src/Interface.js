@@ -149,6 +149,7 @@ class Interface extends Component {
           deletePeep={this.deletePeep.bind(this)}
           likePeep={this.likePeep.bind(this)}
           unlikePeep={this.unlikePeep.bind(this)}
+          thisUserId={this.state.user_id}
         />
       </div>
     )

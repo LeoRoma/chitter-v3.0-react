@@ -45,17 +45,20 @@ class Posts extends Component {
   }
 
   render() {
+
     const peeps = this.props.peeps;
     return (
       <div>
         {peeps.map((peep) =>
 
           <div>
-            <Peep key={peep.id}
+            <Peep
+              userId={peep.user.id}
               handle={peep.user.handle}
               createdAt={this.time(peep.created_at)}
               body={peep.body}
               isMine={this.props.isMine}
+              thisUserId={this.props.thisUserId}
             />
 
             {/* <h5>{peep.user.handle}</h5>

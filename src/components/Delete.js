@@ -16,10 +16,12 @@ class Delete extends Component {
   };
 
   render() {
+    
     if (this.props.isMine) {
       return (
         <div>
           <Button onClick={this.handleDelete.bind(this)}
+            userId = {this.props.userId}
             type="submit"
             variant="contained"
             color="secondary"
