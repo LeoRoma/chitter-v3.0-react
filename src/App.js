@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 
+import Home from './components/Home';
 import Interface from './Interface';
 
 import { BrowserRouter, Route } from 'react-router-dom';
@@ -12,8 +13,9 @@ function App() {
   return (
     <div className="container">
       <BrowserRouter>
-        <Route exact path="/signup" component={Signup} />
-        <Route path="/chitter" component={Interface} />
+        <Route exact path="/" component={Home} />
+        <Route path="/d-witter" component={Interface} />
+        <Route path="/signup" component={Signup} />
       </BrowserRouter>
     </div>
   );
