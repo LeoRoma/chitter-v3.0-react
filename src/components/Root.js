@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Header from './Header';
+
 
 class Root extends Component {
   render() {
@@ -19,3 +20,5 @@ class Root extends Component {
     )
   }
 }
+
+export default Root;

@@ -53,4 +53,4 @@ class PostPeep extends Component {
   }
 }
 
-export default PostPeep
+export default PostPeep;
