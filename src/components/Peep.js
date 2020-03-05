@@ -11,16 +11,15 @@ class Peep extends Component {
     };
   };
 
-  // componentDidMount() {
-  //   console.log(this.props.userId)
-  //   // console.log(this.props.thisUserId)
-  //   if (this.props.thisUserId.toString(10) === this.props.userId.toString(10)){
-  //     console.log('hello')
-  //   }
-  // };
+  componentDidMount() {
+    if (this.props.userId.toString(10) === this.state.userId) {
+      this.setState({
+        isMine: true
+      })
+    }
+  };
 
   render() {
-    const peep = this.props.peep
     const handle = this.props.handle
     const createdAt = this.props.createdAt
     const body = this.props.body
@@ -31,8 +30,7 @@ class Peep extends Component {
           <h5>{createdAt}</h5>
           <h3>{body}</h3>
           <Delete
-            isMine={this.props.isMine}
-            userId={this.props.userId}
+            isMine={this.state.isMine}
           />
         </div>
       </div>

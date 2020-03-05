@@ -10,11 +10,11 @@ class Home extends Component {
     return (
       <div className="container">
         Welcome to D-witter
-        <p><Link to="/login">
+        <p><Link to="/signup">
 
           <Fab variant="extended" aria-label="go" color="primary">
-          Enter
-</Fab>
+            Enter
+          </Fab>
         </Link></p>
       </div>
     )
