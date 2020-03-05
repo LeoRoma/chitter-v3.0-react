@@ -5,6 +5,8 @@ import PostPeep from './components/PostPeep';
 import SignUp from './components/Signup';
 import axios from 'axios';
 
+
+
 class Interface extends Component {
   constructor(props) {
     super(props)
@@ -14,7 +16,8 @@ class Interface extends Component {
       password: '',
       user_id: '',
       session_key: '',
-      isMine: false
+      isMine: false,
+      redirect: false
     }
   };
 
@@ -29,40 +32,6 @@ class Interface extends Component {
       .then((res) => console.log(this.state))
       .catch(err => console.log(err))
   };
-
-  // Sign Up
-  signUp = (newUser) => {
-    axios.post('https://chitter-backend-api.herokuapp.com/users', {
-      user: {
-        handle: newUser.handle,
-        password: newUser.password
-      }
-    })
-      .then(res => console.log(res))
-      .catch(err => console.log(err));
-  };
-
-  // Login
-  login = (currentUser) => {
-    axios.post('https://chitter-backend-api.herokuapp.com/sessions/', {
-      session: {
-        handle: currentUser.handle,
-        password: currentUser.password
-      }
-    })
-      .then(res => this.setState({
-        user_id: res.data.user_id,
-        session_key: res.data.session_key,
-      }))
-      .catch(err => console.log(err));
-    this.setState({
-      isMine: true
-    })
-  };
-
-  getUserId = () => {
-    sessionStorage.setItem('user_id', this.state.user_id)
-  }
 
   // Post peep 
   sendPeep = (peep) => {
@@ -131,13 +100,6 @@ class Interface extends Component {
   render() {
     return (
       <div>
-        {/* Signup and Login  */}
-        <SignUp
-          signUp={this.signUp.bind(this)}
-          login={this.login.bind(this)}
-          getUserId={this.getUserId.bind(this)}
-        />
-
         {/* Send a new peep  */}
         <PostPeep
           sendPeep={this.sendPeep.bind(this)} />
