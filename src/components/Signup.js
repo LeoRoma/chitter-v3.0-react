@@ -5,7 +5,7 @@ import Login from './Login'
 
 import axios from 'axios';
 
-import { Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 
@@ -44,28 +44,7 @@ class SignUp extends Component {
     })
       .then(res => console.log(res))
       .catch(err => console.log(err));
-  };
-
-  // login 
-  userLogin = () => {
-    this.props.login(this.state);
-    // this.setState({
-    //   handle: '',
-    //   password: '',
-    // })
-  };
-
-
-  // Sign Up
-  signUp = (newUser) => {
-    axios.post('https://chitter-backend-api.herokuapp.com/users', {
-      user: {
-        handle: newUser.handle,
-        password: newUser.password
-      }
-    })
-      .then(res => console.log(res))
-      .catch(err => console.log(err));
+    this.setRedirect()
   };
 
   // Login
@@ -77,26 +56,14 @@ class SignUp extends Component {
         password: this.state.password
       }
     })
-      .then(res => this.setState({
-        user_id: res.data.user_id,
-        session_key: res.data.session_key,
-      }))
-      .catch(err => console.log(err));
-    this.setRedirect()
-  };
-
-
-  login = (currentUser) => {
-    axios.post('https://chitter-backend-api.herokuapp.com/sessions/', {
-      session: {
-        handle: currentUser.handle,
-        password: currentUser.password
-      }
-    })
-      .then(res => this.setState({
-        user_id: res.data.user_id,
-        session_key: res.data.session_key,
-      }))
+      // .then(res => this.setState({
+      //   user_id: res.data.user_id,
+      //   session_key: res.data.session_key,
+      // }))
+      .then(res => {
+        sessionStorage.setItem('user_id', res.data.user_id)
+        sessionStorage.setItem('session_key', res.data.session_key)
+      })
       .catch(err => console.log(err));
     this.setRedirect()
   };

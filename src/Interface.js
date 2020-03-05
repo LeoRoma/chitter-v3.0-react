@@ -14,8 +14,8 @@ class Interface extends Component {
       peeps: [],
       handle: '',
       password: '',
-      user_id: '',
-      session_key: '',
+      user_id: sessionStorage.getItem('user_id'),
+      session_key: sessionStorage.getItem('session_key'),
       isMine: false,
       redirect: false
     }

@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 
 import Interface from './Interface';
-import Root from './components/Root';
+
 import { BrowserRouter, Route } from 'react-router-dom';
 import Signup from './components/Signup';
 
