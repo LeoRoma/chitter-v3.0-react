@@ -59,6 +59,7 @@ class Posts extends Component {
               body={peep.body}
               isMine={this.props.isMine}
               thisUserId={this.props.thisUserId}
+              deletePeep={this.deletePeep.bind(this, peep.id)}
             />
 
             {/* <h5>{peep.user.handle}</h5>

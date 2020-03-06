@@ -19,6 +19,10 @@ class Peep extends Component {
     }
   };
 
+  deletePeep = (id) => {
+    this.props.deletePeep(id)
+  };
+
   render() {
     const handle = this.props.handle
     const createdAt = this.props.createdAt
@@ -31,6 +35,7 @@ class Peep extends Component {
           <h3>{body}</h3>
           <Delete
             isMine={this.state.isMine}
+            deletePeep={this.deletePeep.bind(this)}
           />
         </div>
       </div>
