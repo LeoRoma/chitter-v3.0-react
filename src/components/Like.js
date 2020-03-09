@@ -66,14 +66,19 @@ class Like extends Component {
         Unlike
       </Button>
     )
+
+    const liked = (
+      <p>You liked this peep</p>
+    )
+
     return (
       <div>
-        {this.state.youLiked}
-        <p>
-          <div onClick={this.handleLikeButton.bind(this)}>
-            {this.state.isLiked ? unlike : like}
-          </div>
-        </p>
+        <div>
+          {this.state.isLiked ? liked : null}
+        </div>
+        <div onClick={this.handleLikeButton.bind(this)}>
+          {this.state.isLiked ? unlike : like}
+        </div>
 
       </div>
     )

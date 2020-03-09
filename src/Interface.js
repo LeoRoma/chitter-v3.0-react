@@ -65,8 +65,17 @@ class Interface extends Component {
       .then(res => console.log(res))
       .then((res) => this.getPeeps())
       .catch(err => console.log(err))
+      setTimeout(function() {
+        window.location.reload(false);
+      }, 1000)
+    // this.deletePeepFromView(id);
   };
 
+  // deletePeepFromView(id) {
+  //   const array = this.state.peeps;
+  //   const filtered = array.filter(peep => peep.id !== id)
+  //   this.setState({ peeps: filtered })
+  // }
   // like peep
   likePeep = (id) => {
     const likes = {
