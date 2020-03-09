@@ -8,7 +8,8 @@ class Like extends Component {
       isLiked: false,
       likes: this.props.likes,
       userId: sessionStorage.getItem('user_id'),
-      youLiked: ''
+      youLiked: '',
+      buttonLabel: ''
     }
   };
 
@@ -20,7 +21,7 @@ class Like extends Component {
     this.state.likes.forEach((like) => {
       if (like.user.id.toString(10) === this.state.userId) {
         this.setState({
-          liked: true
+          isLiked: true
         })
       }
     });
@@ -29,7 +30,7 @@ class Like extends Component {
   handleLikeButton = event => {
     event.preventDefault();
     this.state.isLiked = !this.state.isLiked
-    if (this.state.isLiked === false) {
+    if (this.state.isLiked === true) {
       this.likePeep()
     } else {
       this.unlikePeep()
@@ -47,17 +48,31 @@ class Like extends Component {
   };
 
   render() {
+    const like = (
+      <Button
+        type="submit"
+        variant="contained"
+        color="primary"
+      >
+        Like
+          </Button>
+    )
+    const unlike = (
+      <Button
+        type="submit"
+        variant="contained"
+        color="primary"
+      >
+        Unlike
+      </Button>
+    )
     return (
       <div>
         {this.state.youLiked}
         <p>
-          <Button onClick={this.handleLikeButton.bind(this)}
-            type="submit"
-            variant="contained"
-            color="primary"
-          >
-            Like
-          </Button>
+          <div onClick={this.handleLikeButton.bind(this)}>
+            {this.state.isLiked ? unlike : like}
+          </div>
         </p>
 
       </div>
