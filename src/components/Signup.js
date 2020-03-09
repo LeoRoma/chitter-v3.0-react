@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import Login from './Login'
+
+import './Signup.css'
 
 import axios from 'axios';
 
 import { Redirect } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+
 
 
 
@@ -80,54 +81,56 @@ class SignUp extends Component {
 
   render() {
     return (
+      <div className="background">
+        <div className="container">
+          {this.renderRedirect()}
+          <form>
+            {/* Username */}
+            <TextField
+              variant="outlined"
+              required
+              // fullWidth
+              id="email"
+              label="Username"
+              name="email"
+              autoComplete="email"
+              onChange={this.handleHandleChange}
+            /><br />
 
-      <div className="container">
-        {this.renderRedirect()}
-        <form>
-          {/* Username */}
-          <TextField
-            variant="outlined"
-            required
-            // fullWidth
-            id="email"
-            label="Username"
-            name="email"
-            autoComplete="email"
-            onChange={this.handleHandleChange}
-          /><br />
+            {/* password  */}
+            <TextField
+              variant="outlined"
+              required
+              // fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+              onChange={this.handlePasswordChange}
+            /><br />
 
-          {/* password  */}
-          <TextField
-            variant="outlined"
-            required
-            // fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-            onChange={this.handlePasswordChange}
-          /><br />
-
-          {/* signup button  */}
-          <Button onClick={this.handleSignup.bind(this)}
-            type="submit"
-            variant="contained"
-            color="primary"
-          >
-            Sign Up
+            {/* signup button  */}
+            <Button onClick={this.handleSignup.bind(this)}
+              type="submit"
+              variant="contained"
+              color="primary"
+            >
+              Sign Up
           </Button><br />
 
-          {/* login button  */}
-          <Button onClick={this.handleLogin.bind(this)}
-            type="submit"
-            variant="contained"
-            color="primary"
-          >
-            Login
+            {/* login button  */}
+            <Button onClick={this.handleLogin.bind(this)}
+              type="submit"
+              variant="contained"
+              color="primary"
+            >
+              Login
        </Button>
-        </form>
-      </div >
+          </form>
+        </div >
+      </div>
+
 
     );
   }

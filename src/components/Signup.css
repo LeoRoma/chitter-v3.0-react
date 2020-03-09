@@ -1,0 +1,19 @@
+.container{
+  border: 2px solid red;
+  height: 100vh; /* Magic here */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.background {
+  background-image: url("/loginBg.jpg");
+  /* Full height */
+  height: 100%; 
+  width: 100%; 
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: auto;
+  border: 2px solid black;
+}

@@ -1,0 +1,25 @@
+/* .container{
+  border: 1px solid black;
+  height: 100%
+} */
+
+.center {
+  /* background-image: url("/homeBg.jpg"); */
+  height: 100vh; /* Magic here */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 2px solid black; */
+}
+
+.background {
+  background-image: url("/homeBg.jpg");
+  /* Full height */
+  height: 100%; 
+  width: 100%; 
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: auto;
+  border: 2px solid black;
+}
