@@ -45,7 +45,7 @@ class Posts extends Component {
               handle={peep.user.handle}
               createdAt={this.time(peep.created_at)}
               body={peep.body}
-              likes={peep.likes.length}
+              likes={peep.likes}
               isMine={this.props.isMine}
               deletePeep={this.deletePeep.bind(this, peep.id)}
               likePeep={this.likePeep.bind(this, peep.id)}

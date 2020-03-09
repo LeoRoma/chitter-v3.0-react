@@ -16,7 +16,7 @@ class Delete extends Component {
   };
 
   render() {
-    console.log(this.props.isMine)
+    
     if (this.props.isMine) {
       return (
         <div>
