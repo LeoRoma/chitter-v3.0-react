@@ -56,16 +56,12 @@ class SignUp extends Component {
         password: this.state.password
       }
     })
-      // .then(res => this.setState({
-      //   user_id: res.data.user_id,
-      //   session_key: res.data.session_key,
-      // }))
       .then(res => {
         sessionStorage.setItem('user_id', res.data.user_id)
         sessionStorage.setItem('session_key', res.data.session_key)
+        this.setRedirect()
       })
       .catch(err => console.log(err));
-    this.setRedirect()
   };
 
   //Redirect after Login to chitter

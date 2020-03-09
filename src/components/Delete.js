@@ -10,7 +10,7 @@ class Delete extends Component {
     }
   };
 
-  handleDelete = () => {
+  handleDelete = (event) => {
     // event.preventDefault();
     this.props.deletePeep()
   };

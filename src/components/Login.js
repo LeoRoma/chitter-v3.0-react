@@ -16,6 +16,20 @@ class Login extends Component {
     }
   };
 
+  //Redirect after Login to chitter
+
+  setRedirect = () => {
+    this.setState({
+      redirect: true
+    })
+  };
+
+  renderRedirect = () => {
+    if (this.state.redirect) {
+      return <Redirect to='/d-witter' />
+    }
+  };
+
   handleHandleChange = event => {
     this.setState({
       handle: event.target.value
@@ -37,34 +51,16 @@ class Login extends Component {
         password: this.state.password
       }
     })
-      // .then(res => this.setState({
-      //   user_id: res.data.user_id,
-      //   session_key: res.data.session_key,
-      // }))
       .then(res => {
         sessionStorage.setItem('user_id', res.data.user_id)
         sessionStorage.setItem('session_key', res.data.session_key)
+        this.setRedirect()
       })
       .catch(err => console.log(err));
-    this.setRedirect()
   };
 
-  //Redirect after Login to chitter
-
-  setRedirect = () => {
-    this.setState({
-      redirect: true
-    })
-  };
-
-  renderRedirect = () => {
-    if (this.state.redirect) {
-      return <Redirect to='/d-witter' />
-    }
-  };
   render() {
     return (
-
       <div className="container">
         {this.renderRedirect()}
         <form>

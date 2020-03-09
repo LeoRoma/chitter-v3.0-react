@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 import Header from './components/Header'
 import Peeps from './components/Peeps';
 import PostPeep from './components/PostPeep';
-import SignUp from './components/Signup';
-import axios from 'axios';
-
 
 
 class Interface extends Component {
@@ -25,18 +23,18 @@ class Interface extends Component {
   // get peeps
   componentDidMount() {
     this.getPeeps()
+    console.log(this.state.session_key, this.state.user_id)
   };
 
   getPeeps() {
     axios.get('https://chitter-backend-api.herokuapp.com/peeps')
       .then((res) => this.setState({ peeps: res.data }))
-      .then((res) => console.log(this.state))
+      // .then((res) => console.log(this.state))
       .catch(err => console.log(err))
   };
 
   // Post peep 
   sendPeep = (peep) => {
-    console.log(this.state.session_key)
     const headers = {
       'Content-Type': 'application/json',
       'Authorization': 'Token token=' + this.state.session_key
@@ -49,8 +47,12 @@ class Interface extends Component {
     }, {
       headers: headers
     })
+      .then(res => console.log(res))
       .then((res) => this.getPeeps())
       .catch(err => console.log(err))
+    // setTimeout(function () {
+    //   window.location.reload(false);
+    // }, 2000)
   };
 
   // delete peep 
@@ -65,17 +67,11 @@ class Interface extends Component {
       .then(res => console.log(res))
       .then((res) => this.getPeeps())
       .catch(err => console.log(err))
-      setTimeout(function() {
-        window.location.reload(false);
-      }, 1000)
-    // this.deletePeepFromView(id);
+    setTimeout(function () {
+      window.location.reload(false);
+    }, 500)
   };
 
-  // deletePeepFromView(id) {
-  //   const array = this.state.peeps;
-  //   const filtered = array.filter(peep => peep.id !== id)
-  //   this.setState({ peeps: filtered })
-  // }
   // like peep
   likePeep = (id) => {
     const likes = {
