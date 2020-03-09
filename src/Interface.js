@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import Header from './components/Header'
 import Peeps from './components/Peeps';
 import PostPeep from './components/PostPeep';
 import SignUp from './components/Signup';
@@ -102,6 +103,9 @@ class Interface extends Component {
   render() {
     return (
       <div>
+        {/* Navbar */}
+        <Header />
+
         {/* Send a new peep  */}
         <PostPeep
           sendPeep={this.sendPeep.bind(this)} />

@@ -6,12 +6,12 @@ class Like extends Component {
 
   handleLike = event => {
     event.preventDefault();
-    this.props.like()
+    this.props.likePeep()
   };
 
   handleUnlike = event => {
     event.preventDefault();
-    this.props.unlike()
+    this.props.unlikePeep()
   };
 
   render() {

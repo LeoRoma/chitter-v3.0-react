@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-// import Delete from './Delete';
-// import Like from './Like';
+
 import Peep from './Peep';
 
 class Posts extends Component {
@@ -17,20 +16,9 @@ class Posts extends Component {
     this.props.deletePeep(id)
   };
 
-  getUserId = () => {
-    this.props.getUserId()
-    console.log('hello')
-  }
-
   likePeep = (id) => {
     this.props.likePeep(id)
     console.log(this.props)
-    if (this.props.liked === true) {
-      this.setState({
-        liked: 'You liked this peep'
-      })
-    }
-    console.log(this.props.userId)
   };
 
   unlikePeep = (id) => {
@@ -49,35 +37,20 @@ class Posts extends Component {
     const peeps = this.props.peeps;
     return (
       <div>
+      
         {peeps.map((peep) =>
-
           <div>
             <Peep
               userId={peep.user.id}
               handle={peep.user.handle}
               createdAt={this.time(peep.created_at)}
               body={peep.body}
+              likes={peep.likes.length}
               isMine={this.props.isMine}
-              thisUserId={this.props.thisUserId}
               deletePeep={this.deletePeep.bind(this, peep.id)}
+              likePeep={this.likePeep.bind(this, peep.id)}
+              unlikePeep={this.unlikePeep.bind(this, peep.id)}
             />
-
-            {/* <h5>{peep.user.handle}</h5>
-              <h6>{peep.body}</h6>
-              <h6>{this.props.userId}</h6>
-              <p>{peep.created_at}</p>
-              <p>Like: {peep.likes.length}</p> */}
-
-            {/* <Delete
-                thisUserId={this.props.thisUserId}
-                userId={peep.user.id}
-                delete={this.deletePeep.bind(this, peep.id)}
-              /> */}
-            {/* <Like
-                like={this.likePeep.bind(this, peep.id)}
-                unlike={this.unlikePeep.bind(this, peep.id)}
-              /> */}
-
           </div>
         )}
 

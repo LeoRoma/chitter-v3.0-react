@@ -23,19 +23,34 @@ class Peep extends Component {
     this.props.deletePeep(id)
   };
 
+  likePeep = (id) => {
+    this.props.likePeep(id)
+  };
+
+  unlikePeep = (id) => {
+    this.props.unlikePeep(id)
+  };
+
   render() {
     const handle = this.props.handle
     const createdAt = this.props.createdAt
     const body = this.props.body
+    const likes = this.props.likes
+    
     return (
       <div>
         <div>
           <h2>{handle}</h2>
           <h5>{createdAt}</h5>
           <h3>{body}</h3>
+          <h3>Likes: {likes}</h3>
           <Delete
             isMine={this.state.isMine}
             deletePeep={this.deletePeep.bind(this)}
+          />
+          <Like
+            likePeep={this.props.likePeep.bind(this)}
+            unlikePeep={this.props.unlikePeep.bind(this)}
           />
         </div>
       </div>
