@@ -5,58 +5,59 @@ class Like extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      liked: false,
+      isLiked: false,
+      likes: this.props.likes,
       userId: sessionStorage.getItem('user_id'),
       youLiked: ''
     }
   };
 
   componentDidMount() {
-    const likes = this.props.likes.forEach((like) => {
-      // console.log(like.user.id)
+    this.findHandle()
+  };
+
+  findHandle() {
+    this.state.likes.forEach((like) => {
       if (like.user.id.toString(10) === this.state.userId) {
         this.setState({
-          liked: true,
-          youLiked: 'You liked this peep'
+          liked: true
         })
       }
-
-    })
+    });
   };
 
-  handleLike = event => {
+  handleLikeButton = event => {
     event.preventDefault();
+    this.state.isLiked = !this.state.isLiked
+    if (this.state.isLiked === false) {
+      this.likePeep()
+    } else {
+      this.unlikePeep()
+    }
+  }
+
+  likePeep = () => {
     this.props.likePeep()
+    console.log('you liked this peep')
   };
 
-  handleUnlike = event => {
-    event.preventDefault();
+  unlikePeep = () => {
     this.props.unlikePeep()
+    console.log('u unliked this peep')
   };
 
   render() {
-    console.log(this.state.liked, this.state.youLiked)
-    // console.log(likes)
-    // console.log(this.props.likes)
-    // console.log(this.state.userId)
     return (
       <div>
         {this.state.youLiked}
         <p>
-          <Button onClick={this.handleLike.bind(this)}
+          <Button onClick={this.handleLikeButton.bind(this)}
             type="submit"
             variant="contained"
             color="primary"
           >
             Like
-       </Button>
-          <Button onClick={this.handleUnlike.bind(this)}
-            type="submit"
-            variant="contained"
-            color="primary"
-          >
-            Unlike
-        </Button>
+          </Button>
         </p>
 
       </div>

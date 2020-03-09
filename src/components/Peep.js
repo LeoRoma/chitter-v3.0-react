@@ -53,6 +53,7 @@ class Peep extends Component {
             unlikePeep={this.props.unlikePeep.bind(this)}
             likes={this.props.likes}
           />
+          <p>-----</p>
         </div>
       </div>
 
