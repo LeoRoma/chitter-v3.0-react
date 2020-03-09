@@ -1,7 +1,7 @@
-# chitterV3.0-react
+# D-witter
+
 ## Description
-- First React project.
-- The project is not terminated yet.
+Mockup of a twitter webapplication.
 
 ## Features implemented
 - Creating Users
@@ -9,12 +9,13 @@
 - Posting peeps
 - Viewing all peeps
 - Deleting peeps 
-- Liking peeps (need to implement)
-- Unliking peeps (need to implement)
+- Liking peeps 
+- Unliking peeps 
 
 ## Tech Stack
 - React
 - Axios
+- Reactstrap
 
 ## Run it yourself
 Prequisites

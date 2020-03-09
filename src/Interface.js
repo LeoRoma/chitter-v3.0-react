@@ -35,6 +35,7 @@ class Interface extends Component {
 
   // Post peep 
   sendPeep = (peep) => {
+    console.log(this.state.session_key)
     const headers = {
       'Content-Type': 'application/json',
       'Authorization': 'Token token=' + this.state.session_key
@@ -47,7 +48,7 @@ class Interface extends Component {
     }, {
       headers: headers
     })
-      .then((res) => this.componentDidMount())
+      .then((res) => this.getPeeps())
       .catch(err => console.log(err))
   };
 
