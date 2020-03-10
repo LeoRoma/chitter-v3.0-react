@@ -59,7 +59,7 @@ class SignUp extends Component {
 
   render() {
     return (
-      <div className="background-signup">
+      
         <MDBContainer className="center">
           {this.renderRedirect()}
           <MDBRow>
@@ -131,9 +131,6 @@ class SignUp extends Component {
 
           </MDBRow>
         </MDBContainer>
-
-      </div>
-
     );
   }
 }

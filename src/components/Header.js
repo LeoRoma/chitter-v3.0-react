@@ -21,7 +21,7 @@ class Header extends Component {
       <Router>
         <MDBNavbar color="default-color" dark expand="md">
           <MDBNavbarBrand>
-            <strong className="white-text">CHITTER v3.0</strong>
+            <strong className="white-text">D-WITTER</strong>
           </MDBNavbarBrand>
           <MDBNavbarToggler onClick={this.toggleCollapse} />
           <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
@@ -39,12 +39,12 @@ class Header extends Component {
               </MDBNavItem>
               <MDBNavItem>
                 <MDBNavLink className="waves-effect waves-light" to="#!">
-                  <MDBIcon fab icon="twitter" />
+                  <MDBIcon fab icon="github" />
                 </MDBNavLink>
               </MDBNavItem>
               <MDBNavItem>
                 <MDBNavLink className="waves-effect waves-light" to="#!">
-                  <MDBIcon fab icon="google-plus-g" />
+                  <MDBIcon fab icon="linkedin" />
                 </MDBNavLink>
               </MDBNavItem>
 
