@@ -4,11 +4,6 @@ import './Signup.css'
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 
-
-
-
-
-
 class SignUp extends Component {
 
   constructor(props) {
@@ -40,29 +35,12 @@ class SignUp extends Component {
       user: {
         handle: this.state.handle,
         password: this.state.password
-      }
-    })
-      .then(res => console.log(res))
-      .catch(err => console.log(err));
-    this.setRedirect()
-  };
 
-  // Login
-  handleLogin = event => {
-    console.log("hello")
-    event.preventDefault();
-    axios.post('https://chitter-backend-api.herokuapp.com/sessions/', {
-      session: {
-        handle: this.state.handle,
-        password: this.state.password
       }
     })
-      .then(res => {
-        sessionStorage.setItem('user_id', res.data.user_id)
-        sessionStorage.setItem('session_key', res.data.session_key)
-        this.setRedirect()
-      })
+      .then(res => this.setRedirect())
       .catch(err => console.log(err));
+
   };
 
   //Redirect after Login to chitter
@@ -75,7 +53,7 @@ class SignUp extends Component {
 
   renderRedirect = () => {
     if (this.state.redirect) {
-      return <Redirect to='/d-witter' />
+      return <Redirect to='/login' />
     }
   };
 
@@ -99,9 +77,9 @@ class SignUp extends Component {
                 <div className='text-white rgba-stylish-strong py-5 px-5 z-depth-4'>
                   <div className='text-center'>
                     <h3 className='white-text mb-5 mt-4 font-weight-bold'>
-                      <strong>LOG</strong>
+                      <strong>SIGN</strong>
                       <a href='#!' className='pink-text font-weight-bold'>
-                        <strong> IN</strong>
+                        <strong> UP</strong>
                       </a>
                     </h3>
                   </div>
@@ -115,6 +93,7 @@ class SignUp extends Component {
                     onChange={this.handleHandleChange}
                   />
                   <MDBInput
+                    className="font-color-pw"
                     label='Your password'
                     group
                     type='password'
@@ -125,21 +104,21 @@ class SignUp extends Component {
                   <MDBRow className='d-flex align-items-center mb-4'>
                     <div className='text-center mb-3 col-md-12'>
                       <MDBBtn
-                        onClick={this.handleLogin.bind(this)}
+                        onClick={this.handleSignup.bind(this)}
                         color='pink'
                         rounded
                         type='button'
                         className='btn-block z-depth-1'
                       >
-                        Log in
+                        Sign up
                   </MDBBtn>
                     </div>
                   </MDBRow>
                   <MDBCol md='12'>
                     <p className='font-small white-text d-flex justify-content-end'>
-                      Do not have an account?
-                  <a href='#' className='pink-text ml-1 font-weight-bold'>
-                        Sign up
+                      Have an account?
+                  <a href='/login' className='pink-text ml-1 font-weight-bold'>
+                        Login
                   </a>
                     </p>
 

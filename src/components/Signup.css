@@ -8,9 +8,6 @@
   
 }
 
-.login {
-  background-color: white;
-}
 .background-signup {
   background-image: url("/homeBg.jpg");
   height: 100%; 
@@ -20,6 +17,19 @@
   background-color: rgb(16, 16, 17);
 }
 
-.font-color:focus{
-  color:white;
+
+.font-color:focus {
+  color: #fff; 
 }
+
+.font-color-pw:focus {
+  color: #fff; 
+}
+  input[type=text], select{
+     color: white;
+  }
+
+  input[type=password], select {
+    color: white;
+ }
+
