@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
 
 import './Interface.css';
 
@@ -113,11 +114,31 @@ class Interface extends Component {
         {/* Navbar */}
         <Header />
 
+        <MDBContainer>
+          <MDBRow>
+            <MDBCol md="4">
+            <PostPeep
+          sendPeep={this.sendPeep.bind(this)}
+        />
+            </MDBCol>
+            <MDBCol md="8">
+            <Peeps
+          peeps={this.state.peeps}
+          isMine={this.state.isMine}
+          deletePeep={this.deletePeep.bind(this)}
+          likePeep={this.likePeep.bind(this)}
+          unlikePeep={this.unlikePeep.bind(this)}
+          thisUserId={this.state.user_id}
+        />
+            </MDBCol>
+          </MDBRow>
+        </MDBContainer>
         {/* Send a new peep  */}
         <PostPeep
-          sendPeep={this.sendPeep.bind(this)} />
-
+          sendPeep={this.sendPeep.bind(this)}
+        />
         {/* get peeps  */}
+
         <Peeps
           peeps={this.state.peeps}
           isMine={this.state.isMine}
@@ -126,6 +147,7 @@ class Interface extends Component {
           unlikePeep={this.unlikePeep.bind(this)}
           thisUserId={this.state.user_id}
         />
+
       </div>
     )
   }

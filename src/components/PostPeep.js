@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
+
 class PostPeep extends Component {
   constructor(props) {
     super(props);
@@ -9,7 +10,7 @@ class PostPeep extends Component {
       peep: ""
     };
   };
-  
+
   handlePeep = event => {
     this.setState({ peep: event.target.value })
   }
@@ -19,23 +20,23 @@ class PostPeep extends Component {
     this.props.sendPeep(this.state)
     this.setState({
       peep: this.state.peep
-    }) 
+    })
   }
 
   render() {
+    
     return (
-      <div className="container">
-        <form>
-          <TextField
-            variant="outlined"
-            required
-            // fullWidth
-            name="peep"
-            label="Write your peep"
+      <div className="sticky">
+        <form className="form-group w-25">
+          <textarea
+            className="form-control"
             id="peep"
-            autoComplete="current-password"
+            label="Write your peep"
+            rows="5"
+            name="peep"
+            placeholder="Write your peep"
             onChange={this.handlePeep}
-          /><br />
+          />
 
           {/* send peep button  */}
           <Button onClick={this.handlePostPeep.bind(this)}
@@ -48,7 +49,6 @@ class PostPeep extends Component {
         </form>
 
       </div>
-
     )
   }
 }

@@ -36,7 +36,7 @@ class Posts extends Component {
 
     const peeps = this.props.peeps;
     return (
-      <div>
+      <div className="container">
       
         {peeps.map((peep) =>
           <div>

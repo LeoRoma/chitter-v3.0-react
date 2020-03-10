@@ -7,3 +7,27 @@
   background-size: cover;
   background-color: rgb(16, 16, 17);
 }
+
+.sticky{
+  position: -webkit-sticky;
+position: sticky;
+top:0;
+/* border-color: tomato; */
+  /* border-style: dashed; */
+  width: 90rem;
+  height: 50%;
+}
+
+.col-md-8,
+.col-md-4 {
+padding: 1rem;
+background-color:transparent;
+/* border: 2px solid #fff; */
+color: #fff;
+text-align: right;
+}
+
+/* .container {
+  border-color: tomato;
+  border-style: dashed;
+} */
