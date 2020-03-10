@@ -6,7 +6,8 @@ import Interface from './Interface';
 
 import { BrowserRouter, Route } from 'react-router-dom';
 import Home from './components/Home';
-import Login from './components/Login';
+import HomeLogin from './components/HomeLogin';
+
 
 function App() {
 
@@ -15,7 +16,7 @@ function App() {
       <BrowserRouter>
         <Route exact path="/" component={Home} />
         <Route path="/d-witter" component={Interface} />
-        <Route path="/login" component={Login} />
+        <Route path="/login" component={HomeLogin} />
       </BrowserRouter>
     </div>
 

@@ -109,7 +109,7 @@ class Interface extends Component {
 
   render() {
     return (
-      <div>
+      <div className="background-home-login">
         {/* Navbar */}
         <Header />
 
