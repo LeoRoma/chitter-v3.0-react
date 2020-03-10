@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import './Interface.css';
+
 import Header from './components/Header'
 import Peeps from './components/Peeps';
 import PostPeep from './components/PostPeep';

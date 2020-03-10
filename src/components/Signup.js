@@ -2,11 +2,15 @@ import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
+// import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBIcon, MDBInput } from 'mdbreact';
+
 import './Signup.css'
 
 import axios from 'axios';
 
 import { Redirect } from 'react-router-dom';
+
+
 
 
 
@@ -81,10 +85,10 @@ class SignUp extends Component {
 
   render() {
     return (
-      <div className="background">
-        <div className="container">
-          {this.renderRedirect()}
+      <div className="background-signup">
+        <div className="center">
           <form>
+            {this.renderRedirect()}
             {/* Username */}
             <TextField
               variant="outlined"
@@ -117,7 +121,7 @@ class SignUp extends Component {
               color="primary"
             >
               Sign Up
-          </Button><br />
+           </Button><br />
 
             {/* login button  */}
             <Button onClick={this.handleLogin.bind(this)}
@@ -126,11 +130,10 @@ class SignUp extends Component {
               color="primary"
             >
               Login
-       </Button>
+          </Button>
           </form>
-        </div >
+        </div>
       </div>
-
 
     );
   }

@@ -1,17 +1,14 @@
-.container{
+.center{
   border: 2px solid red;
-  height: 100vh; /* Magic here */
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.background {
+.background-signup {
   background-image: url("/loginBg.jpg");
-  /* Full height */
   height: 100%; 
-  width: 100%; 
-  /* Center and scale the image nicely */
   background-position: center;
   background-repeat: no-repeat;
   background-size: auto;
