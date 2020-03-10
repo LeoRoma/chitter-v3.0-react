@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-
-// import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBIcon, MDBInput } from 'mdbreact';
-
+import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBCard, MDBInput } from 'mdbreact';
 import './Signup.css'
-
 import axios from 'axios';
-
 import { Redirect } from 'react-router-dom';
 
 
@@ -27,6 +21,7 @@ class SignUp extends Component {
   };
 
   handleHandleChange = event => {
+    console.log(event.target.value)
     this.setState({
       handle: event.target.value
     })
@@ -54,6 +49,7 @@ class SignUp extends Component {
 
   // Login
   handleLogin = event => {
+    console.log("hello")
     event.preventDefault();
     axios.post('https://chitter-backend-api.herokuapp.com/sessions/', {
       session: {
@@ -86,53 +82,77 @@ class SignUp extends Component {
   render() {
     return (
       <div className="background-signup">
-        <div className="center">
-          <form>
-            {this.renderRedirect()}
-            {/* Username */}
-            <TextField
-              variant="outlined"
-              required
-              // fullWidth
-              id="email"
-              label="Username"
-              name="email"
-              autoComplete="email"
-              onChange={this.handleHandleChange}
-            /><br />
+        <MDBContainer className="center">
+          {this.renderRedirect()}
+          <MDBRow>
+            <MDBCol md='1'>
+              <MDBCard
+                className='card-image'
+                style={{
+                  backgroundImage:
+                    'url(/login.png)',
+                  width: '28rem',
 
-            {/* password  */}
-            <TextField
-              variant="outlined"
-              required
-              // fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              onChange={this.handlePasswordChange}
-            /><br />
+                }
+                }
+              >
+                <div className='text-white rgba-stylish-strong py-5 px-5 z-depth-4'>
+                  <div className='text-center'>
+                    <h3 className='white-text mb-5 mt-4 font-weight-bold'>
+                      <strong>LOG</strong>
+                      <a href='#!' className='pink-text font-weight-bold'>
+                        <strong> IN</strong>
+                      </a>
+                    </h3>
+                  </div>
+                  <MDBInput
+                    className="font-color"
+                    label='Your email'
+                    group
+                    type='text'
+                    validate
+                    labelClass='white-text'
+                    onChange={this.handleHandleChange}
+                  />
+                  <MDBInput
+                    label='Your password'
+                    group
+                    type='password'
+                    validate
+                    labelClass='white-text'
+                    onChange={this.handlePasswordChange}
+                  />
+                  <MDBRow className='d-flex align-items-center mb-4'>
+                    <div className='text-center mb-3 col-md-12'>
+                      <MDBBtn
+                        onClick={this.handleLogin.bind(this)}
+                        color='pink'
+                        rounded
+                        type='button'
+                        className='btn-block z-depth-1'
+                      >
+                        Log in
+                  </MDBBtn>
+                    </div>
+                  </MDBRow>
+                  <MDBCol md='12'>
+                    <p className='font-small white-text d-flex justify-content-end'>
+                      Do not have an account?
+                  <a href='#' className='pink-text ml-1 font-weight-bold'>
+                        Sign up
+                  </a>
+                    </p>
 
-            {/* signup button  */}
-            <Button onClick={this.handleSignup.bind(this)}
-              type="submit"
-              variant="contained"
-              color="primary"
-            >
-              Sign Up
-           </Button><br />
+                  </MDBCol>
 
-            {/* login button  */}
-            <Button onClick={this.handleLogin.bind(this)}
-              type="submit"
-              variant="contained"
-              color="primary"
-            >
-              Login
-          </Button>
-          </form>
-        </div>
+                </div>
+              </MDBCard>
+
+            </MDBCol>
+
+          </MDBRow>
+        </MDBContainer>
+
       </div>
 
     );

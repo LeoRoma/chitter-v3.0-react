@@ -11,13 +11,11 @@ import Signup from './components/Signup';
 function App() {
 
   return (
-    <div>
       <BrowserRouter>
         {/* <Route exact path="/" component={Home} /> */}
         <Route path="/d-witter" component={Interface} />
         <Route exact path="/" component={Signup} />
       </BrowserRouter>
-    </div>
   );
 }
 
