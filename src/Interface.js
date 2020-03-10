@@ -117,37 +117,22 @@ class Interface extends Component {
         <MDBContainer>
           <MDBRow>
             <MDBCol md="4">
-            <PostPeep
-          sendPeep={this.sendPeep.bind(this)}
-        />
+              <PostPeep
+                sendPeep={this.sendPeep.bind(this)}
+              />
             </MDBCol>
             <MDBCol md="8">
-            <Peeps
-          peeps={this.state.peeps}
-          isMine={this.state.isMine}
-          deletePeep={this.deletePeep.bind(this)}
-          likePeep={this.likePeep.bind(this)}
-          unlikePeep={this.unlikePeep.bind(this)}
-          thisUserId={this.state.user_id}
-        />
+              <Peeps
+                peeps={this.state.peeps}
+                isMine={this.state.isMine}
+                deletePeep={this.deletePeep.bind(this)}
+                likePeep={this.likePeep.bind(this)}
+                unlikePeep={this.unlikePeep.bind(this)}
+                thisUserId={this.state.user_id}
+              />
             </MDBCol>
           </MDBRow>
         </MDBContainer>
-        {/* Send a new peep  */}
-        <PostPeep
-          sendPeep={this.sendPeep.bind(this)}
-        />
-        {/* get peeps  */}
-
-        <Peeps
-          peeps={this.state.peeps}
-          isMine={this.state.isMine}
-          deletePeep={this.deletePeep.bind(this)}
-          likePeep={this.likePeep.bind(this)}
-          unlikePeep={this.unlikePeep.bind(this)}
-          thisUserId={this.state.user_id}
-        />
-
       </div>
     )
   }

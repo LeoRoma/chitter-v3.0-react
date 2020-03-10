@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 
 class Like extends Component {
   constructor(props) {
@@ -68,16 +69,19 @@ class Like extends Component {
     )
 
     const liked = (
-      <p>You liked this peep</p>
+      <Typography variant="subtitle2" paragraph>
+        You liked this peep!
+      </Typography>
     )
 
     return (
       <div>
-        <div>
-          {this.state.isLiked ? liked : null}
-        </div>
+
+        {this.state.isLiked ? liked : null}
+
         <div onClick={this.handleLikeButton.bind(this)}>
           {this.state.isLiked ? unlike : like}
+
         </div>
 
       </div>
