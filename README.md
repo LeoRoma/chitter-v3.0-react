@@ -31,3 +31,8 @@ $ npm start
 In browser, visit:
 
 http://localhost:3000/
+
+## Screenshots
+
+### Sign up page
+![Image screenshot](./screenshots/signup.png)

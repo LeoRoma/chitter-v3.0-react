@@ -69,7 +69,7 @@ class Like extends Component {
     )
 
     const liked = (
-      <Typography variant="subtitle2">
+      <Typography variant="subtitle2" style={{color: "white"}}>
         You liked this peep!
       </Typography>
     )

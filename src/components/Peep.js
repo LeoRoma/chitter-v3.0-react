@@ -58,7 +58,7 @@ class Peep extends Component {
                 <Grid item xs={12}>
                   <div >
                     <CardContent>
-                      <Typography component="h3" variant="h3" style={{color: "white"}}>
+                      <Typography component="h4" variant="h4" style={{color: "white"}}>
                         {handle}
                         <p className='font-small white-text d-flex justify-content-end float-right'>
                           {this.state.isMine ? <Delete deletePeep={this.deletePeep.bind(this)} /> : null}
