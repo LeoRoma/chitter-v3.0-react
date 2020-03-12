@@ -15,7 +15,7 @@ Mockup of a twitter webapplication.
 ## Tech Stack
 - React
 - Axios
-- Reactstrap
+- MDBootstrap
 
 ## Run it yourself
 Prequisites

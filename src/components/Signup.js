@@ -1,5 +1,14 @@
 import React, { Component } from 'react';
-import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBCard, MDBInput } from 'mdbreact';
+import {
+  MDBContainer,
+  MDBRow,
+  MDBCol,
+  MDBBtn,
+  MDBCard,
+  MDBInput,
+  MDBAnimation
+} from 'mdbreact';
+
 import './Signup.css'
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
@@ -59,9 +68,27 @@ class SignUp extends Component {
 
   render() {
     return (
-      
-        <MDBContainer className="center">
-          {this.renderRedirect()}
+
+      <MDBContainer className="center">
+        {this.renderRedirect()}
+        <MDBRow>
+          <MDBAnimation
+            type="fadeInLeft"
+            delay=".3s"
+            className="white-text text-center text-md-left col-md-6 mt-xl-5 mb-5"
+          >
+            <h1 className="h1-responsive font-weight-bold">
+              Sign up right now!
+                  </h1>
+            <hr className="hr-light" />
+            <h6 className="mb-4">
+              Welcome to D-witter, to join the world of Digital Twitter please first Sign up and then login to post a peep.
+                  </h6>
+            <MDBBtn outline color="white">
+              Learn More
+                  </MDBBtn>
+          </MDBAnimation>
+
           <MDBRow>
             <MDBCol md='1'>
               <MDBCard
@@ -130,7 +157,9 @@ class SignUp extends Component {
             </MDBCol>
 
           </MDBRow>
-        </MDBContainer>
+        </MDBRow>
+
+      </MDBContainer>
     );
   }
 }
