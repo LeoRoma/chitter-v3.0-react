@@ -39,12 +39,12 @@ class Header extends Component {
                   </MDBDropdown>
                 </MDBNavItem>
                 <MDBNavItem>
-                  <MDBNavLink className="waves-effect waves-light" to="#!">
+                  <MDBNavLink className="waves-effect waves-light" to="https://github.com/LeoRoma">
                     <MDBIcon fab icon="github" />
                   </MDBNavLink>
                 </MDBNavItem>
                 <MDBNavItem>
-                  <MDBNavLink className="waves-effect waves-light" to="#!">
+                  <MDBNavLink className="waves-effect waves-light" to="https://www.linkedin.com/in/jiatian-leo-xia-9b2490191/">
                     <MDBIcon fab icon="linkedin" />
                   </MDBNavLink>
                 </MDBNavItem>
@@ -52,7 +52,7 @@ class Header extends Component {
               </MDBNavbarNav>
               <MDBNavbarNav right>
                 <MDBNavItem active>
-                  <MDBNavLink to="#!">Home</MDBNavLink>
+                  <MDBNavLink to="/signup">Home</MDBNavLink>
                 </MDBNavItem>
               </MDBNavbarNav>
             </MDBCollapse>
