@@ -46,8 +46,8 @@ class Peep extends Component {
     const likesCount = this.props.likesCount
 
     const styles = {
-      fontFamily: "digital",
-      color: "white" 
+      // fontFamily: "digital",
+      color: "white", 
     }
 
 
@@ -56,12 +56,12 @@ class Peep extends Component {
 
         <Grid xs={9}>
           <CardActionArea>
-            <Card className="special-card" style={{ backgroundColor: "transparent" }}>
+            <Card className="special-card" style={{ backgroundColor: "transparent", borderColor: 'white' }}>
               <Grid container spacing={0}>
                 <Grid item xs={12}>
                   <div >
-                    <CardContent>
-                      <Typography component="h2" variant="h5" style={styles}>
+                    <CardContent style={styles}>
+                      <Typography component="h3" variant="h3" style={styles}>
                         {handle}
                       </Typography>
                       <Typography variant="subtitle1" color="textSecondary" style={styles}>

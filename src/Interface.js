@@ -116,11 +116,6 @@ class Interface extends Component {
 
         <MDBContainer>
           <MDBRow>
-            <MDBCol md="4">
-              <PostPeep
-                sendPeep={this.sendPeep.bind(this)}
-              />
-            </MDBCol>
             <MDBCol md="8">
               <Peeps
                 peeps={this.state.peeps}
@@ -129,6 +124,12 @@ class Interface extends Component {
                 likePeep={this.likePeep.bind(this)}
                 unlikePeep={this.unlikePeep.bind(this)}
                 thisUserId={this.state.user_id}
+              />
+
+            </MDBCol>
+            <MDBCol md="4">
+              <PostPeep
+                sendPeep={this.sendPeep.bind(this)}
               />
             </MDBCol>
           </MDBRow>

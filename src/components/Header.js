@@ -5,7 +5,7 @@ import {
 } from "mdbreact";
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import SignUp from './Signup';
+import Login from './Login';
 
 class Header extends Component {
   state = {
@@ -34,7 +34,7 @@ class Header extends Component {
                     </MDBDropdownToggle>
                     <MDBDropdownMenu
                       width="20%">
-                      <MDBDropdownItem href="#!"><SignUp /></MDBDropdownItem>
+                      <MDBDropdownItem href="#!"><Login /></MDBDropdownItem>
                     </MDBDropdownMenu>
                   </MDBDropdown>
                 </MDBNavItem>
