@@ -56,7 +56,7 @@ class Like extends Component {
         color="primary"
       >
         Like
-          </Button>
+      </Button>
     )
     const unlike = (
       <Button
@@ -69,21 +69,17 @@ class Like extends Component {
     )
 
     const liked = (
-      <Typography variant="subtitle2" paragraph style={{color:"white"}}>
+      <Typography variant="subtitle2">
         You liked this peep!
       </Typography>
     )
 
     return (
       <div>
-
-        {this.state.isLiked ? liked : null}
-
         <div onClick={this.handleLikeButton.bind(this)}>
+          {this.state.isLiked ? liked : null}
           {this.state.isLiked ? unlike : like}
-
         </div>
-
       </div>
     )
   };

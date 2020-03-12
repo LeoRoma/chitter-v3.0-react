@@ -34,6 +34,7 @@ class Peep extends Component {
   };
 
   likePeep = (id) => {
+    console.log('hello')
     this.props.likePeep(id)
   };
 
@@ -51,24 +52,25 @@ class Peep extends Component {
 
         <Grid xs={9}>
           <CardActionArea>
-            <Card className="special-card" style={{ backgroundColor: "white", borderColor: 'white', opacity:'1' }}>
+            <Card className="special-card" style={{ backgroundColor: "transparent", backgroundImage:
+                    'url(/cardBg.png)', }}>
               <Grid container spacing={0}>
                 <Grid item xs={12}>
                   <div >
                     <CardContent>
-                      <Typography component="h3" variant="h3">
+                      <Typography component="h3" variant="h3" style={{color: "white"}}>
                         {handle}
                         <p className='font-small white-text d-flex justify-content-end float-right'>
                           {this.state.isMine ? <Delete deletePeep={this.deletePeep.bind(this)} /> : null}
                         </p>
                       </Typography>
-                      <Typography variant="subtitle1" color="textSecondary">
+                      <Typography variant="subtitle1" color="textSecondary" style={{color: "white"}}>
                         {createdAt}
                       </Typography>
-                      <Typography variant="subtitle1" paragraph>
+                      <Typography variant="subtitle1" paragraph style={{color: "white"}}>
                         {body}
                       </Typography>
-                      <Typography variant="subtitle2" paragraph>
+                      <Typography variant="subtitle2" paragraph style={{color: "white"}}>
                         Likes: {likesCount}
                       </Typography>
                       <Like

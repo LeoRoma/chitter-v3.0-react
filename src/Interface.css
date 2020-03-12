@@ -1,5 +1,5 @@
 .background-home-login {
-  background-image: url("/dwitterBg.jpg");
+  background-image: url("/twitterBg.jpg");
   height: 100%; 
   background-position: center;
   background-repeat: no-repeat;
@@ -27,7 +27,7 @@ color: #fff;
 text-align: left;
 }
 
-/* .container {
-  border-color: tomato;
-  border-style: dashed;
-} */
+.special-card{
+  border-style: groove;
+  border-color: rgb(245, 199, 209);
+}
