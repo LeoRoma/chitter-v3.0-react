@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
-// import CardMedia from '@material-ui/core/CardMedia';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+
 
 import Like from './Like';
 import Delete from './Delete';
@@ -44,26 +44,33 @@ class Peep extends Component {
     const createdAt = this.props.createdAt
     const body = this.props.body
     const likesCount = this.props.likesCount
+
+    const styles = {
+      fontFamily: "digital",
+      color: "white" 
+    }
+
+
     return (
       <div>
 
-        <Grid xs={12}>
+        <Grid xs={9}>
           <CardActionArea>
-            <Card >
+            <Card className="special-card" style={{ backgroundColor: "transparent" }}>
               <Grid container spacing={0}>
                 <Grid item xs={12}>
                   <div >
                     <CardContent>
-                      <Typography component="h2" variant="h5">
+                      <Typography component="h2" variant="h5" style={styles}>
                         {handle}
                       </Typography>
-                      <Typography variant="subtitle1" color="textSecondary">
+                      <Typography variant="subtitle1" color="textSecondary" style={styles}>
                         {createdAt}
                       </Typography>
-                      <Typography variant="subtitle1" paragraph>
+                      <Typography variant="subtitle1" paragraph style={styles}>
                         {body}
                       </Typography>
-                      <Typography variant="subtitle2" paragraph>
+                      <Typography variant="subtitle2" paragraph style={styles}>
                         Likes: {likesCount}
                       </Typography>
                       <Like
@@ -85,5 +92,7 @@ class Peep extends Component {
     )
   }
 };
+
+
 
 export default Peep;

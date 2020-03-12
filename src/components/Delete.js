@@ -24,7 +24,7 @@ class Delete extends Component {
           variant="contained"
           color="secondary"
         >
-          Delete
+          X
          </Button>
       </div>
     )
