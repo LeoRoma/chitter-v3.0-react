@@ -4,13 +4,12 @@
 Mockup of a twitter webapplication.
 
 ## Features implemented
-- Creating Users
-- Logging in
-- Posting peeps
-- Viewing all peeps
-- Deleting peeps 
-- Liking peeps 
-- Unliking peeps 
+- An user can:
+- Sign up an new account with username and password.
+- Can login with the same username and password used to sign up.
+- Can post a peep after login.
+- Can delete his/her own peep.
+- Can like and dislike all other user's peep. 
 
 ## Tech Stack
 - React
