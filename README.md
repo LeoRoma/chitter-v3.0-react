@@ -34,5 +34,11 @@ http://localhost:3000/
 
 ## Screenshots
 
-### Sign up page
+### Sign up 
 ![Image screenshot](./screenshots/signup.png)
+
+### Login 
+![Image screenshot](./screenshots/login.png)
+
+### D-witter
+![Image screenshot](./screenshots/twitter.png)
