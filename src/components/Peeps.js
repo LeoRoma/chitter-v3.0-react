@@ -28,7 +28,7 @@ class Posts extends Component {
   time = (timestamp) => {
     const date = timestamp.slice(0, 10);
     const time = timestamp.slice(11, 19);
-    const newTime = date + ' @ ' + time;
+    const newTime = date + ' at ' + time;
     return newTime;
   }
 

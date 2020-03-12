@@ -7,6 +7,8 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
 
+
+
 import Like from './Like';
 import Delete from './Delete';
 
@@ -44,33 +46,29 @@ class Peep extends Component {
     const createdAt = this.props.createdAt
     const body = this.props.body
     const likesCount = this.props.likesCount
-
-    const styles = {
-      // fontFamily: "digital",
-      color: "white", 
-    }
-
-
+    
     return (
-      <div>
 
         <Grid xs={9}>
           <CardActionArea>
-            <Card className="special-card" style={{ backgroundColor: "transparent", borderColor: 'white' }}>
+            <Card className="special-card" style={{ backgroundColor: "white", borderColor: 'white', opacity:'1' }}>
               <Grid container spacing={0}>
                 <Grid item xs={12}>
                   <div >
-                    <CardContent style={styles}>
-                      <Typography component="h3" variant="h3" style={styles}>
+                    <CardContent>
+                      <Typography component="h3" variant="h3">
                         {handle}
+                        <p className='font-small white-text d-flex justify-content-end float-right'>
+                          {this.state.isMine ? <Delete deletePeep={this.deletePeep.bind(this)} /> : null}
+                        </p>
                       </Typography>
-                      <Typography variant="subtitle1" color="textSecondary" style={styles}>
+                      <Typography variant="subtitle1" color="textSecondary">
                         {createdAt}
                       </Typography>
-                      <Typography variant="subtitle1" paragraph style={styles}>
+                      <Typography variant="subtitle1" paragraph>
                         {body}
                       </Typography>
-                      <Typography variant="subtitle2" paragraph style={styles}>
+                      <Typography variant="subtitle2" paragraph>
                         Likes: {likesCount}
                       </Typography>
                       <Like
@@ -79,7 +77,7 @@ class Peep extends Component {
                         unlikePeep={this.props.unlikePeep.bind(this)}
                         likes={this.props.likes}
                       />
-                      {this.state.isMine ? <Delete deletePeep={this.deletePeep.bind(this)} /> : null}
+
                     </CardContent>
                   </div>
                 </Grid>
@@ -87,8 +85,6 @@ class Peep extends Component {
             </Card>
           </CardActionArea>
         </Grid>
-      </div>
-
     )
   }
 };

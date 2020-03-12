@@ -12,10 +12,10 @@
   position: -webkit-sticky;
 position: sticky;
 top:0;
-/* border-color: tomato; */
-  /* border-style: dashed; */
+/* border-color: tomato; 
+  border-style: dashed; */
   width: 90rem;
-  height: 50%;
+  height: 1.5%;
 }
 
 .col-md-8,
@@ -24,7 +24,7 @@ padding: 1rem;
 background-color:transparent;
 /* border: 2px solid #fff; */
 color: #fff;
-text-align: right;
+text-align: left;
 }
 
 /* .container {
